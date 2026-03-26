@@ -2,21 +2,6 @@
 import type { ButtonProps } from '@nuxt/ui';
 import SocialsAnchor from './SocialsAnchor.vue';
 
-const links = ref<ButtonProps[]>([
-    {
-        label: 'Contact me',
-        to: '/docs/getting-started',
-        icon: 'mdi:email-outline'
-    },
-    {
-        label: 'See my work',
-        to: '/docs/getting-started/theme/design-system',
-        color: 'neutral',
-        variant: 'subtle',
-        trailingIcon: 'i-lucide-arrow-right'
-    }
-])
-
 </script>
 
 <template>
@@ -31,10 +16,10 @@ const links = ref<ButtonProps[]>([
                 <p class="text-md">
                     Software Engineer since 2024. I do backend by profession,
                     full-stack since
-                    AI came up. I build software which matches people needs. I’ve graduated with a Bachelor of
-                    Engineering and I am to pursuing master's degree starting in 10.2026. Seeing code I wrote actually
-                    help
-                    people keeps my drive.
+                    AI came up. I’ve graduated with a Bachelor of
+                    Engineering and I am to pursuing master's degree starting in 10.2026. I build software which matches
+                    people's needs and seeing code I wrote actually
+                    help people keeps my drive.
                 </p>
                 <SocialsAnchor></SocialsAnchor>
             </div>

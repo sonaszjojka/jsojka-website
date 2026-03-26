@@ -37,7 +37,7 @@ const items = ref<TabsItem[]>([
 
             </UTabs>
             <div class="flex justify-end">
-                <UButton label="Full details" trailing-icon="i-lucide-arrow-right" variant="ghost" color="neutral"
+                <UButton label="Full details" trailing-icon="mi:arrow-right" variant="ghost" color="neutral"
                     class="hover:bg-transparent hover:text-primary px-0"
                     to="https://www.linkedin.com/in/jonasz-s%C3%B3jka/details/experience/?locale=en-US"
                     target="_blank" />

@@ -4,7 +4,7 @@ import type { PageAnchor } from '@nuxt/ui';
 const links = ref<PageAnchor[]>([
     {
         label: 'Mail',
-        icon: 'material-symbols:mail',
+        icon: 'mi:email',
         to: 'mailto:jonasz.sojkaa@gmail.com',
     },
     {
@@ -24,7 +24,7 @@ const links = ref<PageAnchor[]>([
 
 <template>
     <div class="flex flex-row">
-        <UButton label="Resume" leading-icon="mdi:file-download-outline" variant="outline" color="neutral"
+        <UButton label="Resume" leading-icon="mi:document-download" variant="outline" color="neutral"
             class="hover:text-primary mr-6" to="/resume.png" target="_blank" />
         <UPageAnchors :links="links" :ui="{ list: 'flex flex-row gap-6' }" />
     </div>
