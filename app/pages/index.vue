@@ -2,6 +2,8 @@
 import FeaturedProjects from '~/components/landing/FeaturedProjects.vue';
 import PastExperienceTab from '~/components/landing/PastExperienceTab.vue';
 import PersonalInfoCard from '~/components/landing/PersonalInfoCard.vue';
+import SectionHeader from '~/components/landing/SectionHeader.vue';
+import TechnologyStack from '~/components/landing/TechnologyStack.vue';
 
 
 
@@ -13,11 +15,11 @@ import PersonalInfoCard from '~/components/landing/PersonalInfoCard.vue';
 
         <PastExperienceTab></PastExperienceTab>
 
-        <h2 class="text-2xl font-bold flex items-center gap-2">
-            <UIcon name="mdi:star-outline" class="size-8" />
-            <span>Featured Projects</span>
-        </h2>
+        <SectionHeader section-title="Featured Projects" icon-name="ph:star-light""></SectionHeader>
         <FeaturedProjects></FeaturedProjects>
+
+        <SectionHeader section-title=" Technology Stack" icon-name="ph:stack-light""></SectionHeader>
+        <TechnologyStack></TechnologyStack>
     </div>
 </template>
 
