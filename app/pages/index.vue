@@ -8,14 +8,17 @@ import PersonalInfoCard from '~/components/landing/PersonalInfoCard.vue';
 </script>
 
 <template>
-    <PersonalInfoCard></PersonalInfoCard>
+    <div class="flex flex-col gap-10">
+        <PersonalInfoCard></PersonalInfoCard>
 
-    <h2 class="text-2xl font-bold flex items-center gap-2">
-        <span>Let's dive in my career</span>
-    </h2>
+        <PastExperienceTab></PastExperienceTab>
 
-    <PastExperienceTab></PastExperienceTab>
-    <FeaturedProjects></FeaturedProjects>
+        <h2 class="text-2xl font-bold flex items-center gap-2">
+            <UIcon name="mdi:star-outline" class="size-8" />
+            <span>Featured Projects</span>
+        </h2>
+        <FeaturedProjects></FeaturedProjects>
+    </div>
 </template>
 
 <style></style>

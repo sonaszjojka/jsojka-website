@@ -3,21 +3,19 @@ import type { PageAnchor } from '@nuxt/ui';
 
 const links = ref<PageAnchor[]>([
     {
-        label: 'Github',
-        icon: 'i-simple-icons-github',
-        to: '/roadmapa-2025.pdf',
+        label: 'Mail',
+        icon: 'material-symbols:mail',
+        to: 'mailto:jonasz.sojkaa@gmail.com',
     },
     {
         label: 'Linkedin',
         icon: 'i-simple-icons-linkedin',
         to: 'https://www.linkedin.com/in/jonasz-s%C3%B3jka/',
-        target: '_blank'
     },
     {
         label: 'Github',
         icon: 'i-simple-icons-github',
         to: 'https://github.com/sonaszjojka',
-        target: '_blank'
     },
 
 ])
@@ -25,5 +23,9 @@ const links = ref<PageAnchor[]>([
 </script>
 
 <template>
-    <UPageAnchors :links="links" />
+    <div class="flex flex-row">
+        <UButton label="Resume" leading-icon="mdi:file-download-outline" variant="outline" color="neutral"
+            class="hover:text-primary mr-6" to="/resume.png" target="_blank" />
+        <UPageAnchors :links="links" :ui="{ list: 'flex flex-row gap-6' }" />
+    </div>
 </template>

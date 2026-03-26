@@ -1,2 +1,5 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+:root {
+  font-family: "JetBrains Mono", monospace;
+}
