@@ -6,7 +6,7 @@ const { sectionTitle, iconName } = defineProps({
 </script>
 
 <template>
-    <h2 class="text-2xl font-bold flex items-center gap-2 mb-2">
+    <h2 class="text-2xl font-bold flex items-center gap-2 mb-3">
         <UIcon :name="iconName" class=" size-8" />
         <span>{{ sectionTitle }}</span>
     </h2>

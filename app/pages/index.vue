@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import FeaturedProjects from '~/components/landing/FeaturedProjects.vue';
+import FuturePlans from '~/components/landing/FuturePlans.vue';
 import OtherFeatures from '~/components/landing/OtherFeatures.vue';
 import PastExperienceTab from '~/components/landing/PastExperienceTab.vue';
 import PersonalInfoCard from '~/components/landing/PersonalInfoCard.vue';
@@ -17,6 +18,7 @@ import TechnologyStack from '~/components/landing/TechnologyStack.vue';
         </div>
 
         <div class="mb-10">
+            <SectionHeader section-title="Experience" icon-name="mingcute:suitcase-line"></SectionHeader>
             <PastExperienceTab></PastExperienceTab>
         </div>
 
@@ -25,13 +27,22 @@ import TechnologyStack from '~/components/landing/TechnologyStack.vue';
             <FeaturedProjects></FeaturedProjects>
         </div>
 
-        <div class=" mb-10">
-            <SectionHeader section-title=" Technology Stack" icon-name="mi:layers"></SectionHeader>
+        <div class="mb-10">
+            <div class="flex flex-row items-center justify-between">
+                <SectionHeader section-title="Technology Stack" icon-name="mi:layers"></SectionHeader>
+                <UButton label="View more" trailing-icon="mi:arrow-right" variant="ghost" color="neutral"
+                    class="hover:bg-transparent hover:text-primary px-0" to="/projects" target="_blank" />
+            </div>
             <TechnologyStack></TechnologyStack>
         </div>
 
-        <div class=" mb-10">
-            <SectionHeader section-title=" Other" icon-name="mi:layers"></SectionHeader>
+        <div class="mb-10">
+            <SectionHeader section-title="My Development Plan" icon-name="mi:calendar"></SectionHeader>
+            <FuturePlans></FuturePlans>
+        </div>
+
+        <div class="mb-10">
+            <SectionHeader section-title="Other" icon-name="cuida:fire-outline"></SectionHeader>
             <OtherFeatures></OtherFeatures>
         </div>
     </div>

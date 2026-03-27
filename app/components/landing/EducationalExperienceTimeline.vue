@@ -8,7 +8,7 @@ const items = ref<TimelineItem[]>([
         description: "Polish-Japanese Academy of Information Technology. Grade: 5. Specialization in databases and web applications.",
         avatar: {
             src: "/pjatk_logo.png",
-            loading: "lazy" as const
+            loading: "lazy" as const,
         },
         value: "pjatkb",
         slot: "pjatkb" as const
@@ -20,5 +20,4 @@ const items = ref<TimelineItem[]>([
 
 <template>
     <UTimeline :items="items" orientation="vertical"></UTimeline>
-
 </template>

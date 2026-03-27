@@ -6,9 +6,10 @@ import SocialsAnchor from './SocialsAnchor.vue';
 
 <template>
     <UPageCard>
-        <div class="flex justify-between items-center p-2">
+        <div
+            class="flex flex-col justify-center text-center md:flex-row md:justify-between md:text-left items-center p-2">
             <div class="flex flex-col gap-4 w-2/3 p-2">
-                <div class="flex flex-row gap-5">
+                <div class="flex flex-col items-center md:flex md:flex-row gap-5">
                     <h2 class="text-3xl pb-2 font-bold">Hi, I'm <span class="text-primary">Jonasz</span></h2>
                     <UBadge icon="emojione-v1:flag-for-poland" label="23 years old" size='lg' color="neutral"
                         variant="outline"></UBadge>
@@ -25,7 +26,7 @@ import SocialsAnchor from './SocialsAnchor.vue';
             </div>
             <div>
                 <img src="/profile_picture_js.png" alt="jonasz_sójka"
-                    class="size-70 rounded-full border-primary border-5" />
+                    class="hidden md:block size-70 rounded-full border-primary border-5" />
             </div>
         </div>
     </UPageCard>
