@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ["@nuxt/ui"],
+  modules: ["@nuxt/ui", '@nuxt/content'],
   css: ["./app/assets/css/main.css"],
   ssr: true,
   nitro: {
