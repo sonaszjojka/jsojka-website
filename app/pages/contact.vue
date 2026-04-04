@@ -19,27 +19,26 @@ const links = ref<ButtonProps[]>([
 </script>
 
 <template>
-    <SectionHeader section-title='Contact' class="p-10 items-center" />
-    <UCard class="relative overflow-hidden">
-        <div class="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent" />
+    <div class="flex flex-col min-h-screen">
 
-        <div class="relative">
+        <SectionHeader section-title="Contact" class="p-10 items-center" />
 
-            <UPageHero title="Let’s get in touch 👋"
-                description="Whether you want to collaborate on a project, tackle a challenging problem, or just talk tech — feel free to reach out. Let’s build something meaningful together."
-                :links="links" />
+        <div class="flex flex-col items-center justify-center flex-1 pb-24">
+            <UCard class="relative overflow-hidden bg-transparent">
+                <div class="absolute" />
+                <div class="relative">
+                    <UPageHero title="Let's get in touch 👋"
+                        description="Whether you want to collaborate on a project, tackle a challenging problem, or just talk tech — feel free to reach out. Let's build something meaningful together."
+                        :links="links" />
+                </div>
+            </UCard>
+
+            <div class="flex flex-row flex-wrap justify-center gap-10 mt-6">
+                <div class="text-sm text-gray-500">🤝 Open to collaboration</div>
+                <div class="text-sm text-gray-500">⚡ Fast response</div>
+                <div class="text-sm text-gray-500">🤗 Productive and positive attitude</div>
+            </div>
         </div>
 
-    </UCard>
-    <div class="flex flex-row justify-center gap-10 mt-6">
-        <div class="text-sm text-gray-500">
-            🤝 Open to collaboration
-        </div>
-        <div class="text-sm text-gray-500">
-            ⚡ Fast response
-        </div>
-        <div class="text-sm text-gray-500">
-            🤗 Productive and positive attitude
-        </div>
     </div>
 </template>
