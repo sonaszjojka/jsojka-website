@@ -11,11 +11,6 @@ const items = computed<NavigationMenuItem[]>(() => [
         active: route.path === '/'
     },
     {
-        label: 'About',
-        to: '/about',
-        active: route.path.startsWith('/about')
-    },
-    {
         label: 'Projects',
         to: '/projects',
         active: route.path.startsWith('/projects')
@@ -39,7 +34,5 @@ const title = computed(() => "~" + route.path)
                 src: '/profile_picture_js.png'
             }" target="_blank" />
         </template>
-
-        <AppSidebar></AppSidebar>
     </UHeader>
 </template>

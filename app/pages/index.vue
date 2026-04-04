@@ -7,8 +7,6 @@ import PersonalInfoCard from '~/components/landing/PersonalInfoCard.vue';
 import SectionHeader from '~/components/landing/SectionHeader.vue';
 import TechnologyStack from '~/components/landing/TechnologyStack.vue';
 
-
-
 </script>
 
 <template>

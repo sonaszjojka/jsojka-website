@@ -2,9 +2,17 @@
 </script>
 
 <template>
-  <UContainer>
+  <div class="min-h-screen flex flex-col">
+
     <AppHeader />
-    <slot />
+
+    <main class="flex-1">
+      <UContainer>
+        <slot />
+      </UContainer>
+    </main>
+
     <AppFooter />
-  </UContainer>
+
+  </div>
 </template>
