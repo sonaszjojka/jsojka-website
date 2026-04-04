@@ -21,7 +21,7 @@ const links = ref<ButtonProps[]>([
 <template>
     <SectionHeader section-title='Contact' class="p-10 items-center" />
     <UCard class="relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
+        <div class="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent" />
 
         <div class="relative">
 

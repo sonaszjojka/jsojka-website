@@ -2,10 +2,13 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", '@nuxt/content'],
-  css: ["./app/assets/css/main.css"],
+  modules: ["@nuxt/ui", "@nuxt/content"],
+  css: ["~/assets/css/main.css"],
   ssr: true,
   nitro: {
     static: true,
+  },
+  colorMode: {
+    preference: "light",
   },
 });

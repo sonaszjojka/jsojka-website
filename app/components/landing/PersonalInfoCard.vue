@@ -4,7 +4,7 @@ import SocialsAnchor from './SocialsAnchor.vue';
 </script>
 
 <template>
-    <UPageCard>
+    <UPageCard class="mt-5">
         <div
             class="flex flex-col justify-center text-center md:flex-row md:justify-between md:text-left items-center p-2">
             <div class="flex flex-col gap-4 w-2/3 p-2">

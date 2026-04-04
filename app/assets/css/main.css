@@ -1,5 +1,24 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+@tailwind utilities;
+
 :root {
-  font-family: "JetBrains Mono", monospace;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "Inconsolata", monospace;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  /* --font-sans: "Geist", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  font-family: "Geist", sans-serif; */
+
+  --ui-primary: var(--color-emerald-500);
+  --ui-neutral: var(--color-zinc-500);
+  background-color: var(--color-zinc-50);
+  color: var(--color-zinc-900);
+}
+.dark {
+  --ui-primary: var(--color-emerald-400);
+  --ui-neutral: var(--color-zinc-400);
+  background-color: var(--color-zinc-950);
+  color: var(--color-zinc-100);
 }
