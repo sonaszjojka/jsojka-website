@@ -39,7 +39,7 @@ const active = ref(0)
 onMounted(() => {
     interval = setInterval(() => {
         active.value = (active.value + 1) % 3
-    }, 3000)
+    }, 2000)
 })
 
 onUnmounted(() => {

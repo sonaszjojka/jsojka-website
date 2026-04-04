@@ -12,17 +12,17 @@ const getTooltip = (name: string, startYear: number, commercialStartYear?: numbe
 
     if (commercialStartYear) {
         const commercialExp = getExp(commercialStartYear);
-        return `${name} (${exp}y Exp, ${commercialExp}y Commercial)`;
+        return `${name} (${exp}y Experience, ${commercialExp}y Commercial)`;
     }
 
-    return `${name} (${exp}y Exp)`;
+    return `${name} (${exp}y Experience)`;
 };
 </script>
 
 <template>
     <div class="flex flex-col md:grid grid-cols-2 grid-rows-2">
-        <UPageCard>
-            <h3 class="text-center">Backend</h3>
+        <UPageCard class="m-1">
+            <h3 class="text-center font-bold">Backend</h3>
             <div class="flex flex-rows gap-3 items-center justify-center">
                 <TechnologyIcon iconName="devicon:java" :iconTooltipText="getTooltip('Java', 2022, 2025)" />
                 <TechnologyIcon iconName="logos:spring-icon"
@@ -34,8 +34,8 @@ const getTooltip = (name: string, startYear: number, commercialStartYear?: numbe
             </div>
         </UPageCard>
 
-        <UPageCard>
-            <h3 class="text-center">Frontend</h3>
+        <UPageCard class="m-1">
+            <h3 class="text-center font-bold">Frontend</h3>
             <div class="flex flex-rows gap-3 items-center justify-center">
                 <TechnologyIcon iconName="logos:vue" :iconTooltipText="getTooltip('Vue', 2025)" />
                 <TechnologyIcon iconName="devicon:angular" :iconTooltipText="getTooltip('Angular', 2025)" />
@@ -46,8 +46,8 @@ const getTooltip = (name: string, startYear: number, commercialStartYear?: numbe
             </div>
         </UPageCard>
 
-        <UPageCard class="overflow-hidden justify-center align-center md:col-span-2">
-            <h3 class="text-center">Other</h3>
+        <UPageCard class="m-1 overflow-hidden justify-center align-center md:col-span-2">
+            <h3 class="text-center font-bold">Other</h3>
             <div class="flex flex-rows flex-wrap gap-3 items-center justify-center">
                 <TechnologyIcon iconName="logos:docker-icon" :iconTooltipText="getTooltip('Docker', 2024)" />
                 <TechnologyIcon iconName="logos:visual-studio-code"
