@@ -34,7 +34,7 @@ import TechnologyStack from '~/components/landing/TechnologyStack.vue';
             <div class="flex flex-row items-center justify-between">
                 <SectionHeader section-title="Featured Projects" icon-name="mi:favorite"></SectionHeader>
                 <UButton label="View more" trailing-icon="mi:arrow-right" variant="ghost" color="neutral"
-                    class="hover:bg-transparent hover:text-primary px-0" to="/projects" target="" />
+                    class="!hover:bg-transparent bg-transparent! hover:text-primary px-0" to="/projects" target="" />
             </div>
             <FeaturedProjects></FeaturedProjects>
         </div>

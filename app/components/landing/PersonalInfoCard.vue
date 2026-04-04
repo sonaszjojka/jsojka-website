@@ -14,9 +14,8 @@ import SocialsAnchor from './SocialsAnchor.vue';
                         variant="outline"></UBadge>
                 </div>
                 <p class="text-md">
-                    Software Engineer since 2024. I do backend by profession,
-                    full-stack since
-                    AI came up. I’ve graduated with a Bachelor of
+                    Software Engineer since 2024. I’m a backend developer by profession, and a full-stack developer in
+                    my free time. I’ve graduated with a Bachelor of
                     Engineering and I am pursuing master's degree starting in 10.2026. I build software which matches
                     people's needs and seeing code I wrote actually
                     help people keeps my drive.

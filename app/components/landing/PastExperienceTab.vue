@@ -30,7 +30,7 @@ const items = ref<TabsItem[]>([
                     <WorkExperienceTimeline></WorkExperienceTimeline>
                     <div class="flex justify-end">
                         <UButton label="Full details" trailing-icon="akar-icons:link-out" variant="ghost"
-                            color="neutral" class="hover:bg-transparent hover:text-primary px-0"
+                            color="neutral" class="!hover:bg-transparent bg-transparent! hover:text-primary px-0"
                             to="https://www.linkedin.com/in/jonasz-s%C3%B3jka/details/experience/?locale=en-US"
                             target="_blank" />
                     </div>
