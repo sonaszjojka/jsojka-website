@@ -14,7 +14,7 @@ import AnimatedBg from '~/components/shared/AnimatedBg.vue';
       </UContainer>
     </main>
 
-    <AppFooter />
+    <AppFooter style="isolation: isolate;" class="relative z-10" />
 
   </div>
 </template>
