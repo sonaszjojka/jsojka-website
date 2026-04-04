@@ -23,22 +23,22 @@ import TechnologyStack from '~/components/landing/TechnologyStack.vue';
         </div>
 
         <div class="mb-10">
-            <SectionHeader section-title="Featured Projects" icon-name="mi:favorite"></SectionHeader>
-            <FeaturedProjects></FeaturedProjects>
-        </div>
-
-        <div class="mb-10">
-            <div class="flex flex-row items-center justify-between">
-                <SectionHeader section-title="Technology Stack" icon-name="mi:layers"></SectionHeader>
-                <UButton label="View more" trailing-icon="mi:arrow-right" variant="ghost" color="neutral"
-                    class="hover:bg-transparent hover:text-primary px-0" to="/projects" target="_blank" />
-            </div>
+            <SectionHeader section-title="Technology Stack" icon-name="mi:layers"></SectionHeader>
             <TechnologyStack></TechnologyStack>
         </div>
 
         <div class="mb-10">
             <SectionHeader section-title="My Development Plan" icon-name="mi:calendar"></SectionHeader>
             <FuturePlans></FuturePlans>
+        </div>
+
+        <div class="mb-10">
+            <div class="flex flex-row items-center justify-between">
+                <SectionHeader section-title="Featured Projects" icon-name="mi:favorite"></SectionHeader>
+                <UButton label="View more" trailing-icon="mi:arrow-right" variant="ghost" color="neutral"
+                    class="hover:bg-transparent hover:text-primary px-0" to="/projects" target="" />
+            </div>
+            <FeaturedProjects></FeaturedProjects>
         </div>
 
         <div class="mb-10">

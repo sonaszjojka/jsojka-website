@@ -4,7 +4,7 @@ import type { TimelineItem } from '@nuxt/ui';
 const items = ref<TimelineItem[]>([
     {
         date: "Oct 2022 - Feb 2026",
-        title: "Bachelor’s of Engineering - Computer Science",
+        title: "Bachelor of Engineering - Computer Science",
         description: "Polish-Japanese Academy of Information Technology. Grade: 5. Specialization in databases and web applications.",
         avatar: {
             src: "/pjatk_logo.png",

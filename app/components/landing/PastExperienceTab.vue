@@ -28,6 +28,12 @@ const items = ref<TabsItem[]>([
                 <template #work="{ item }">
                     <div class="pt-3"></div>
                     <WorkExperienceTimeline></WorkExperienceTimeline>
+                    <div class="flex justify-end">
+                        <UButton label="Full details" trailing-icon="akar-icons:link-out" variant="ghost"
+                            color="neutral" class="hover:bg-transparent hover:text-primary px-0"
+                            to="https://www.linkedin.com/in/jonasz-s%C3%B3jka/details/experience/?locale=en-US"
+                            target="_blank" />
+                    </div>
                 </template>
 
                 <template #education="{ item }">
@@ -36,12 +42,6 @@ const items = ref<TabsItem[]>([
                 </template>
 
             </UTabs>
-            <div class="flex justify-end">
-                <UButton label="Full details" trailing-icon="mi:arrow-right" variant="ghost" color="neutral"
-                    class="hover:bg-transparent hover:text-primary px-0"
-                    to="https://www.linkedin.com/in/jonasz-s%C3%B3jka/details/experience/?locale=en-US"
-                    target="_blank" />
-            </div>
         </div>
     </UPageCard>
 </template>

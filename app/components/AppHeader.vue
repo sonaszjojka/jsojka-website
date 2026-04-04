@@ -37,11 +37,7 @@ const title = computed(() => "~" + route.path)
         <template #right>
             <UUser name='Jonasz Sójka' description="Software Engineer" :avatar="{
                 src: '/profile_picture_js.png'
-            }" :chip="{
-                color: 'primary',
-                position: 'top-right'
             }" target="_blank" />
-
         </template>
 
         <AppSidebar></AppSidebar>

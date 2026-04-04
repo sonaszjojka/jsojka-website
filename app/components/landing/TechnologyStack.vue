@@ -28,10 +28,9 @@ const getTooltip = (name: string, startYear: number, commercialStartYear?: numbe
                 <TechnologyIcon iconName="logos:spring-icon"
                     :iconTooltipText="getTooltip('Spring Framework', 2025, 2025)" />
                 <TechnologyIcon iconName="devicon:postgresql" :iconTooltipText="getTooltip('PostgreSQL', 2025)" />
-                <TechnologyIcon iconName="logos:javascript" :iconTooltipText="getTooltip('JavaScript', 2025)" />
-                <TechnologyIcon iconName="logos:typescript-icon" :iconTooltipText="getTooltip('TypeScript', 2025)" />
                 <TechnologyIcon iconName="simple-icons:apachekafka" :iconTooltipText="getTooltip('Kafka', 2025)" />
                 <TechnologyIcon iconName="devicon:rabbitmq" :iconTooltipText="getTooltip('RabbitMQ', 2025)" />
+                <TechnologyIcon iconName="file-icons:gosu" :iconTooltipText="getTooltip('Gosu | Guidewire', 2025)" />
             </div>
         </UPageCard>
 
@@ -40,8 +39,10 @@ const getTooltip = (name: string, startYear: number, commercialStartYear?: numbe
             <div class="flex flex-rows gap-3 items-center justify-center">
                 <TechnologyIcon iconName="logos:vue" :iconTooltipText="getTooltip('Vue', 2025)" />
                 <TechnologyIcon iconName="devicon:angular" :iconTooltipText="getTooltip('Angular', 2025)" />
+                <TechnologyIcon iconName="logos:typescript-icon" :iconTooltipText="getTooltip('TypeScript', 2025)" />
                 <TechnologyIcon iconName="devicon:tailwindcss" :iconTooltipText="getTooltip('Tailwind', 2025)" />
                 <TechnologyIcon iconName="devicon:nuxt" :iconTooltipText="getTooltip('Nuxt', 2025)" />
+                <TechnologyIcon iconName="logos:javascript" :iconTooltipText="getTooltip('JavaScript', 2025)" />
             </div>
         </UPageCard>
 
@@ -51,8 +52,8 @@ const getTooltip = (name: string, startYear: number, commercialStartYear?: numbe
                 <TechnologyIcon iconName="logos:docker-icon" :iconTooltipText="getTooltip('Docker', 2024)" />
                 <TechnologyIcon iconName="logos:visual-studio-code"
                     :iconTooltipText="getTooltip('Visual Studio Code', 2023)" />
-                <TechnologyIcon iconName="logos:jetbrains" :iconTooltipText="getTooltip('JetBrains', 2022)" />
-                <TechnologyIcon iconName="logos:git-icon" :iconTooltipText="getTooltip('Git', 2023)" />
+                <TechnologyIcon iconName="logos:jetbrains" :iconTooltipText="getTooltip('JetBrains', 2022, 2025)" />
+                <TechnologyIcon iconName="logos:git-icon" :iconTooltipText="getTooltip('Git', 2023, 2025)" />
                 <TechnologyIcon iconName="streamline-logos:github-logo-2-solid"
                     :iconTooltipText="getTooltip('GitHub', 2023)" />
                 <TechnologyIcon iconName="logos:bitbucket" :iconTooltipText="getTooltip('Bitbucket', 2025, 2025)" />

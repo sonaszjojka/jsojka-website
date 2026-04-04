@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ButtonProps } from '@nuxt/ui';
 import SocialsAnchor from './SocialsAnchor.vue';
 
 </script>
@@ -18,7 +17,7 @@ import SocialsAnchor from './SocialsAnchor.vue';
                     Software Engineer since 2024. I do backend by profession,
                     full-stack since
                     AI came up. I’ve graduated with a Bachelor of
-                    Engineering and I am to pursuing master's degree starting in 10.2026. I build software which matches
+                    Engineering and I am pursuing master's degree starting in 10.2026. I build software which matches
                     people's needs and seeing code I wrote actually
                     help people keeps my drive.
                 </p>

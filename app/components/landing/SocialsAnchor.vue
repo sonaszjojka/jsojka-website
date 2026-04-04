@@ -25,7 +25,7 @@ const links = ref<PageAnchor[]>([
 <template>
     <div class="flex items-center flex-col-reverse gap-2 md:flex md:flex-row">
         <UButton label="Resume" leading-icon="mi:document-download" variant="outline" color="neutral"
-            class="hover:text-primary mr-6" to="/resume.png" target="_blank" />
+            class="hover:text-primary mr-5" to="/resume.png" target="_blank" />
         <UPageAnchors :links="links" :ui="{ list: 'flex flex-row gap-6' }" />
     </div>
 </template>

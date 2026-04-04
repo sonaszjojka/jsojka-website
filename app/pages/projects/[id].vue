@@ -10,5 +10,7 @@ const { data: project } = await useAsyncData(`project-${route.params.slug}`, () 
 </script>
 
 <template>
-    <ContentRenderer v-if="project" :value="project" />
+    <UCard class="flex m-20 p-20 min-w-xl" variant="subtle">
+        <ContentRenderer v-if="project" :value="project" />
+    </UCard>
 </template>
