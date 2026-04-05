@@ -9,7 +9,14 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "overrides": {
+    "vue-router": "$vue-router"
+  },
   "dependencies": {
+    "@nuxt/content": "^3.12.0",
+    "@nuxt/ui": "^4.5.1",
+    "better-sqlite3": "^12.8.0",
+    "normalize.css": "^8.0.1",
     "nuxt": "^4.4.2",
     "vue": "^3.5.30",
     "vue-router": "^5.0.3"
