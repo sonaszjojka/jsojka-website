@@ -10,6 +10,5 @@ const route = useRoute()
 <template>
     <!-- :value (edu)-->
     <SectionHeader section-title='Projects' class="p-10 items-center" />
-
     <ProjectPosts orientation="vertical" />
 </template>

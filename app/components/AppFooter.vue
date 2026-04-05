@@ -18,7 +18,7 @@ import type { NavigationMenuItem } from '@nuxt/ui'
                 target="_blank" aria-label="E-mail" />
             <UButton icon="i-simple-icons-linkedin" color="neutral" variant="ghost"
                 to="https://www.linkedin.com/in/jonasz-s%C3%B3jka/" target="_blank" aria-label="Linkedin" />
-            <UButton icon="i-simple-icons-github" color="neutral" variant="ghost" to="https://github.com/nuxt/nuxt"
+            <UButton icon="i-simple-icons-github" color="neutral" variant="ghost" to="https://github.com/sonaszjojka"
                 target="_blank" aria-label="GitHub" />
         </template>
     </UFooter>
