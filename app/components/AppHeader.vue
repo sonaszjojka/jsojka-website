@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui';
-import AppSidebar from './AppSidebar.vue';
 
 const route = useRoute()
 
@@ -23,16 +22,20 @@ const items = computed<NavigationMenuItem[]>(() => [
 ])
 
 const title = computed(() => "~" + route.path)
-
 </script>
 
 <template>
     <UHeader :title="title">
-        <UNavigationMenu v-bind:items="items"></UNavigationMenu>
+        <!-- desktop -->
+        <UNavigationMenu :items="items" />
+
         <template #right>
-            <UUser name='Jonasz Sójka' description="Software Engineer" :avatar="{
-                src: '/profile_picture_js.png'
-            }" target="_blank" />
+            <UUser name='Jonasz Sójka' description="Software Engineer" :avatar="{ src: '/profile_picture_js.png' }"
+                target="_blank" />
+        </template>
+
+        <template #body>
+            <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
         </template>
     </UHeader>
 </template>

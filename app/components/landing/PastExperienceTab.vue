@@ -24,7 +24,7 @@ const items = ref<TabsItem[]>([
 <template>
     <UPageCard>
         <div class="flex flex-col">
-            <UTabs :items="items">
+            <UTabs :items="items" :ui="{ trigger: 'cursor-pointer' }">
                 <template #work="{ item }">
                     <div class="pt-3"></div>
                     <WorkExperienceTimeline></WorkExperienceTimeline>
@@ -40,7 +40,6 @@ const items = ref<TabsItem[]>([
                     <div class="pt-3"></div>
                     <EducationalExperienceTimeline></EducationalExperienceTimeline>
                 </template>
-
             </UTabs>
         </div>
     </UPageCard>

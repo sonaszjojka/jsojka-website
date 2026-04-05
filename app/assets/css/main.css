@@ -22,3 +22,21 @@
   background-color: var(--color-zinc-950);
   color: var(--color-zinc-100);
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--ui-primary);
+  border-radius: 999px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ui-primary) transparent;
+}
