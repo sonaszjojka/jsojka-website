@@ -10,7 +10,7 @@ import TechnologyStack from '~/components/landing/TechnologyStack.vue';
 </script>
 
 <template>
-    <div class="flex flex-col">
+    <div class="flex flex-col ">
         <div class="mb-10">
             <PersonalInfoCard></PersonalInfoCard>
         </div>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { TimelineItem } from '@nuxt/ui';
 
-
 const items = ref<TimelineItem[]>([
     {
         date: '2022+',
@@ -21,9 +20,7 @@ const items = ref<TimelineItem[]>([
         description: "Currently learning Frontend and waiting for the beginning of University.",
         avatar: {
             src: '/profile_picture_js.png',
-            // loading: "lazy" as const
         },
-
     },
     {
         date: '2026-2028',
@@ -36,7 +33,16 @@ const items = ref<TimelineItem[]>([
 let interval: any
 const active = ref(0)
 
+const isMobile = ref(false)
+
+const checkMobile = () => {
+    isMobile.value = window.innerWidth < 768
+}
+
 onMounted(() => {
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
     interval = setInterval(() => {
         active.value = (active.value + 1) % 3
     }, 2000)
@@ -44,12 +50,13 @@ onMounted(() => {
 
 onUnmounted(() => {
     clearInterval(interval)
+    window.removeEventListener('resize', checkMobile)
 })
 </script>
 
 <template>
-    <UPageCard>
-        <UTimeline orientation="horizontal" :default-value="active" :items="items" class="w-full p-3"
-            :ui="{ indicator: 'size-10' }" />
+    <UPageCard :ui="{ root: 'overflow-hidden' }">
+        <UTimeline :orientation="isMobile ? 'vertical' : 'horizontal'" :default-value="active" :items="items"
+            class="w-full p-3 min-w-0" :ui="{ indicator: 'size-10' }" />
     </UPageCard>
 </template>
