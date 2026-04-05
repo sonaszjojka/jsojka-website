@@ -21,7 +21,7 @@ const getTooltip = (name: string, startYear: number, commercialStartYear?: numbe
 
 <template>
     <div class="flex flex-col md:grid grid-cols-2 grid-rows-2">
-        <UPageCard class="m-1">
+        <UPageCard class="m-2">
             <h3 class="text-center font-bold">Backend</h3>
             <div class="flex flex-rows gap-3 items-center justify-center">
                 <TechnologyIcon iconName="devicon:java" :iconTooltipText="getTooltip('Java', 2022, 2025)" />
@@ -30,11 +30,12 @@ const getTooltip = (name: string, startYear: number, commercialStartYear?: numbe
                 <TechnologyIcon iconName="devicon:postgresql" :iconTooltipText="getTooltip('PostgreSQL', 2025)" />
                 <TechnologyIcon iconName="simple-icons:apachekafka" :iconTooltipText="getTooltip('Kafka', 2025)" />
                 <TechnologyIcon iconName="devicon:rabbitmq" :iconTooltipText="getTooltip('RabbitMQ', 2025)" />
-                <TechnologyIcon iconName="file-icons:gosu" :iconTooltipText="getTooltip('Gosu | Guidewire', 2025)" />
+                <TechnologyIcon iconName="file-icons:gosu"
+                    :iconTooltipText="getTooltip('Gosu | Guidewire', 2025, 2025)" />
             </div>
         </UPageCard>
 
-        <UPageCard class="m-1">
+        <UPageCard class="m-2">
             <h3 class="text-center font-bold">Frontend</h3>
             <div class="flex flex-rows gap-3 items-center justify-center">
                 <TechnologyIcon iconName="logos:vue" :iconTooltipText="getTooltip('Vue', 2025)" />
@@ -46,7 +47,7 @@ const getTooltip = (name: string, startYear: number, commercialStartYear?: numbe
             </div>
         </UPageCard>
 
-        <UPageCard class="m-1 overflow-hidden justify-center align-center md:col-span-2">
+        <UPageCard class="m-2 overflow-hidden justify-center align-center md:col-span-2">
             <h3 class="text-center font-bold">Other</h3>
             <div class="flex flex-rows flex-wrap gap-3 items-center justify-center">
                 <TechnologyIcon iconName="logos:docker-icon" :iconTooltipText="getTooltip('Docker', 2024)" />
