@@ -1,6 +1,16 @@
 <script setup lang="ts">
 const education = [
     {
+        from: "2026.10",
+        to: "2028.07",
+        org: "Polish-Japanese Academy of Information Technology",
+        role: "Master's degree — Information Management",
+        summary: "Specialisation in IT systems architecture.",
+        tags: ["IT systems architecture", "System design"],
+        logo: "/pjatk_logo.png",
+        upcoming: true,
+    },
+    {
         from: "2022.10",
         to: "2026.02",
         org: "Polish-Japanese Academy of Information Technology",
@@ -8,6 +18,7 @@ const education = [
         summary: "Specialisation in databases and web applications. Final grade: 5.",
         tags: ["Databases", "Web applications", "Engineering thesis"],
         logo: "/pjatk_logo.png",
+        upcoming: false,
     },
 ]
 </script>
@@ -22,7 +33,10 @@ const education = [
             </div>
 
             <div class="rail-body relative">
-                <span class="rail-marker hidden sm:block" aria-hidden="true" />
+                <!-- The master's has not started yet, so it must not inherit the
+                     filled "current" marker the rail gives its first row. -->
+                <span class="rail-marker hidden sm:block"
+                    :class="entry.upcoming && 'bg-[var(--paper)]! border-[var(--rule-strong)]!'" aria-hidden="true" />
 
                 <div class="flex items-center gap-2.5">
                     <img :src="useAssetUrl(entry.logo)" :alt="`${entry.org} logo`" loading="lazy"
@@ -30,7 +44,10 @@ const education = [
                     <h3 class="font-semibold tracking-tight text-[var(--ink-strong)]">{{ entry.org }}</h3>
                 </div>
 
-                <p class="mt-1.5 font-medium text-[var(--ink)]">{{ entry.role }}</p>
+                <p class="mt-1.5 flex flex-wrap items-baseline gap-x-2 font-medium text-[var(--ink)]">
+                    {{ entry.role }}
+                    <span v-if="entry.upcoming" class="eyebrow">Starts October 2026</span>
+                </p>
                 <p class="mt-1 font-serif text-[0.9375rem] leading-relaxed text-[var(--ink-muted)]">
                     {{ entry.summary }}
                 </p>

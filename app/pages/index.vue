@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Certifications from '~/components/landing/Certifications.vue';
 import EducationalExperienceTimeline from '~/components/landing/EducationalExperienceTimeline.vue';
 import FeaturedProjects from '~/components/landing/FeaturedProjects.vue';
 import FuturePlans from '~/components/landing/FuturePlans.vue';
@@ -38,6 +39,11 @@ useHead({
         <section class="mb-14">
             <SectionHeader section-title="Education" />
             <EducationalExperienceTimeline />
+        </section>
+
+        <section class="mb-14">
+            <SectionHeader section-title="Certifications" />
+            <Certifications />
         </section>
 
         <section class="mb-14">
