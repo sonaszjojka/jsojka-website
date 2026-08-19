@@ -1,19 +1,22 @@
 <script setup lang="ts">
 const links = [
-    { label: 'Email', icon: 'mi:email', to: 'mailto:jonasz.sojkaa@gmail.com', external: true },
-    { label: 'LinkedIn', icon: 'i-simple-icons-linkedin', to: 'https://www.linkedin.com/in/jonasz-s%C3%B3jka/', external: true },
-    { label: 'GitHub', icon: 'i-simple-icons-github', to: 'https://github.com/sonaszjojka', external: true },
+    { label: 'Email', icon: 'mi:email', to: 'mailto:jonasz.sojkaa@gmail.com' },
+    { label: 'LinkedIn', icon: 'i-simple-icons-linkedin', to: 'https://www.linkedin.com/in/jonasz-s%C3%B3jka/' },
+    { label: 'GitHub', icon: 'i-simple-icons-github', to: 'https://github.com/sonaszjojka' },
 ]
+
+// A plain <a>, not NuxtLink: the PDF is a static file in public/, so the
+// router must not try to resolve it as a page.
+const resume = useAssetUrl('/jonasz_sojka_cv_2026.pdf')
 </script>
 
 <template>
     <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
-        <!-- NOTE: /resume.png is not in public/ — this 404s until the file is added. -->
-        <NuxtLink to="/resume.png" target="_blank"
+        <a :href="resume" target="_blank" rel="noopener"
             class="inline-flex items-center gap-2 rounded-sm bg-[var(--accent)] px-3.5 py-2 text-sm font-medium text-white transition-colors hover:bg-[var(--accent-hover)]">
             <UIcon name="mi:document-download" class="size-4" />
-            Download résumé
-        </NuxtLink>
+            Résumé (PDF)
+        </a>
 
         <div class="flex items-center gap-x-5">
             <NuxtLink v-for="link in links" :key="link.label" :to="link.to" target="_blank" rel="noopener"
