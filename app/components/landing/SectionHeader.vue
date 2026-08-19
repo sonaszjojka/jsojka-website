@@ -1,13 +1,14 @@
 <script setup lang="ts">
-const { sectionTitle, iconName } = defineProps({
-    sectionTitle: String,
-    iconName: String
-})
+defineProps<{
+    sectionTitle?: string
+    /** Kept for call-site compatibility; the eyebrow carries the label instead. */
+    iconName?: string
+}>()
 </script>
 
 <template>
-    <h2 class="text-2xl font-bold flex items-center gap-2 mb-3">
-        <UIcon :name="iconName" class=" size-8" />
-        <span>{{ sectionTitle }}</span>
-    </h2>
+    <div class="flex items-baseline gap-4 mb-6">
+        <h2 class="eyebrow shrink-0">{{ sectionTitle }}</h2>
+        <span class="h-px flex-1 bg-[var(--rule)]" aria-hidden="true" />
+    </div>
 </template>

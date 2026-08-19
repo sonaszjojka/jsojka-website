@@ -11,7 +11,10 @@ export default defineNuxtConfig({
   nitro: {
     static: true,
   },
+  // The design commits to a single light "paper" palette, so pin the mode
+  // rather than let a visitor's dark system preference half-apply it.
   colorMode: {
     preference: "light",
+    fallback: "light",
   },
 });

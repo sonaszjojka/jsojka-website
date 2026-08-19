@@ -1,44 +1,58 @@
 <script setup lang="ts">
-import type { ButtonProps } from '@nuxt/ui';
-import SectionHeader from '~/components/landing/SectionHeader.vue';
+useHead({ title: 'Contact — Jonasz Sójka' })
 
-const links = ref<ButtonProps[]>([
+const channels = [
     {
-        label: 'Mail',
-        icon: 'mi:email',
+        label: 'Email',
+        value: 'jonasz.sojkaa@gmail.com',
         to: 'mailto:jonasz.sojkaa@gmail.com',
-        class: 'transition-transform hover:scale-105'
+        icon: 'mi:email',
     },
     {
-        label: 'Linkedin',
-        icon: 'i-simple-icons-linkedin',
+        label: 'LinkedIn',
+        value: 'jonasz-sójka',
         to: 'https://www.linkedin.com/in/jonasz-s%C3%B3jka/',
-        class: 'transition-transform hover:scale-105'
+        icon: 'i-simple-icons-linkedin',
     },
-])
+    {
+        label: 'GitHub',
+        value: 'sonaszjojka',
+        to: 'https://github.com/sonaszjojka',
+        icon: 'i-simple-icons-github',
+    },
+]
 </script>
 
 <template>
-    <div class="flex flex-col min-h-screen">
+    <div class="pt-14 pb-24">
+        <h1 class="text-[2rem] font-semibold leading-tight tracking-[-0.03em] text-[var(--ink-strong)]">
+            Get in touch
+        </h1>
 
-        <SectionHeader section-title="Contact" class="p-10 items-center" />
+        <p class="mt-4 max-w-[48ch] font-serif text-[1.0625rem] leading-relaxed text-[var(--ink-muted)]">
+            Whether it's a role, a project worth building, or a problem you'd rather
+            talk through than write down — I read everything that arrives.
+        </p>
 
-        <div class="flex flex-col items-center justify-center flex-1 pb-24">
-            <UCard class="relative overflow-hidden bg-transparent">
-                <div class="absolute" />
-                <div class="relative">
-                    <UPageHero title="Let's get in touch 👋"
-                        description="Whether you want to collaborate on a project, tackle a challenging problem, or just talk tech — feel free to reach out. Let's build something meaningful together."
-                        :links="links" />
-                </div>
-            </UCard>
+        <div class="mt-10 divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
+            <NuxtLink v-for="channel in channels" :key="channel.label" :to="channel.to" target="_blank" rel="noopener"
+                class="group grid items-center gap-1 py-4 sm:grid-cols-[7.5rem_1fr_auto] sm:gap-0">
+                <span class="eyebrow">{{ channel.label }}</span>
 
-            <div class="flex flex-row flex-wrap justify-center gap-10 mt-6">
-                <div class="text-sm text-gray-500">🤝 Open to collaboration</div>
-                <div class="text-sm text-gray-500">⚡ Fast response</div>
-                <div class="text-sm text-gray-500">🤗 Productive and positive attitude</div>
-            </div>
+                <span class="flex items-center gap-2.5 sm:pl-6">
+                    <UIcon :name="channel.icon" class="size-4 shrink-0 text-[var(--ink-faint)]" />
+                    <span class="text-[var(--ink)] transition-colors group-hover:text-[var(--accent)]">
+                        {{ channel.value }}
+                    </span>
+                </span>
+
+                <UIcon name="akar-icons:link-out"
+                    class="hidden size-3.5 text-[var(--ink-faint)] transition-colors group-hover:text-[var(--accent)] sm:block" />
+            </NuxtLink>
         </div>
 
+        <p class="mt-8 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-[var(--ink-faint)]">
+            Open to collaboration · Fast response
+        </p>
     </div>
 </template>
