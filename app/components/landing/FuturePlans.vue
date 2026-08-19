@@ -1,62 +1,52 @@
 <script setup lang="ts">
-import type { TimelineItem } from '@nuxt/ui';
-
-const items = ref<TimelineItem[]>([
+const plan = [
     {
-        date: '2022+',
-        title: 'Backend Expertise',
-        description: "Design patterns, Cloud basics, DevOps basics, System Design...",
-        icon: 'eos-icons:master-outlined'
+        period: '2022+',
+        title: 'Backend depth',
+        detail: 'Design patterns, system design, cloud and DevOps fundamentals.',
+        state: 'done' as const,
     },
     {
-        date: '2025+',
-        title: 'Frontend Skills Development',
-        description: 'After writing my thesis with Angular, I am heading towards learning Vue, Nuxt and Tailwind.',
-        icon: 'qlementine-icons:file-html-16'
+        period: '2025+',
+        title: 'Frontend breadth',
+        detail: 'Angular through the engineering thesis, now Vue, Nuxt and Tailwind.',
+        state: 'done' as const,
     },
     {
-        date: 'NOW',
-        title: 'I am here!',
-        description: "Currently learning Frontend and waiting for the beginning of University.",
-        avatar: {
-            src: useAssetUrl('/profile_picture_js.png'),
-        },
+        period: 'now',
+        title: 'Where I am',
+        detail: 'Shipping Guidewire integrations at VHV while sharpening the frontend half.',
+        state: 'current' as const,
     },
     {
-        date: '2026-2028',
-        title: 'University: Architecture of IT Systems',
-        description: "Beginning of Master's studies, Specialty, field of study: System Design, Architecture of IT Systems.",
-        icon: 'ri:graduation-cap-line'
+        period: '2026—2028',
+        title: "Master's — Architecture of IT Systems",
+        detail: 'System design and IT architecture, starting October 2026.',
+        state: 'planned' as const,
     },
-])
-
-let interval: any
-const active = ref(0)
-
-const isMobile = ref(false)
-
-const checkMobile = () => {
-    isMobile.value = window.innerWidth < 768
-}
-
-onMounted(() => {
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-
-    interval = setInterval(() => {
-        active.value = (active.value + 1) % 3
-    }, 2000)
-})
-
-onUnmounted(() => {
-    clearInterval(interval)
-    window.removeEventListener('resize', checkMobile)
-})
+]
 </script>
 
 <template>
-    <UPageCard :ui="{ root: 'overflow-hidden' }">
-        <UTimeline :orientation="isMobile ? 'vertical' : 'horizontal'" :default-value="active" :items="items"
-            class="w-full p-3 min-w-0" :ui="{ indicator: 'size-10' }" />
-    </UPageCard>
+    <ol class="rail">
+        <li v-for="step in plan" :key="step.title" class="rail-row contents">
+            <div class="rail-date" :class="step.state === 'current' && 'text-[var(--accent)]! font-medium'">
+                {{ step.period }}
+            </div>
+
+            <div class="rail-body relative">
+                <span class="rail-marker hidden sm:block" :class="step.state === 'current'
+                    ? 'bg-[var(--accent)]! border-[var(--accent)]!'
+                    : 'bg-[var(--paper)]! border-[var(--rule-strong)]!'" aria-hidden="true" />
+
+                <h3 class="font-semibold tracking-tight"
+                    :class="step.state === 'planned' ? 'text-[var(--ink-muted)]' : 'text-[var(--ink-strong)]'">
+                    {{ step.title }}
+                </h3>
+                <p class="mt-1 font-serif text-[0.9375rem] leading-relaxed text-[var(--ink-muted)]">
+                    {{ step.detail }}
+                </p>
+            </div>
+        </li>
+    </ol>
 </template>

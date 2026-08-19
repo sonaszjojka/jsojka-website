@@ -1,14 +1,17 @@
 <script setup lang="ts">
-import SectionHeader from '~/components/landing/SectionHeader.vue';
 import ProjectPosts from '~/components/projects/ProjectPosts.vue';
+import SectionHeader from '~/components/landing/SectionHeader.vue';
 
-
-const route = useRoute()
-
+useHead({ title: 'Projects — Jonasz Sójka' })
 </script>
 
 <template>
-    <!-- :value (edu)-->
-    <SectionHeader section-title='Projects' class="p-10 items-center" />
-    <ProjectPosts orientation="vertical" />
+    <div class="pt-14 pb-24">
+        <h1 class="mb-10 text-[2rem] font-semibold leading-tight tracking-[-0.03em] text-[var(--ink-strong)]">
+            Projects
+        </h1>
+
+        <SectionHeader section-title="All work" />
+        <ProjectPosts />
+    </div>
 </template>

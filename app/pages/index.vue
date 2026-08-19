@@ -1,49 +1,69 @@
 <script setup lang="ts">
+import EducationalExperienceTimeline from '~/components/landing/EducationalExperienceTimeline.vue';
 import FeaturedProjects from '~/components/landing/FeaturedProjects.vue';
 import FuturePlans from '~/components/landing/FuturePlans.vue';
 import OtherFeatures from '~/components/landing/OtherFeatures.vue';
-import PastExperienceTab from '~/components/landing/PastExperienceTab.vue';
 import PersonalInfoCard from '~/components/landing/PersonalInfoCard.vue';
 import SectionHeader from '~/components/landing/SectionHeader.vue';
 import TechnologyStack from '~/components/landing/TechnologyStack.vue';
+import WorkExperienceTimeline from '~/components/landing/WorkExperienceTimeline.vue';
 
+useHead({
+    title: 'Jonasz Sójka — Backend engineer',
+    meta: [{
+        name: 'description',
+        content: 'Backend engineer working on insurance policy systems with Guidewire, Java and Spring Boot.',
+    }],
+})
 </script>
 
 <template>
-    <div class="flex flex-col ">
-        <div class="mb-10">
-            <PersonalInfoCard></PersonalInfoCard>
-        </div>
+    <div class="pb-24">
+        <PersonalInfoCard />
 
-        <div class="mb-10">
-            <SectionHeader section-title="Experience" icon-name="mingcute:suitcase-line"></SectionHeader>
-            <PastExperienceTab></PastExperienceTab>
-        </div>
-
-        <div class="mb-10">
-            <SectionHeader section-title="Technology Stack" icon-name="mi:layers"></SectionHeader>
-            <TechnologyStack></TechnologyStack>
-        </div>
-
-        <div class="mb-10">
-            <SectionHeader section-title="My Development Plan" icon-name="mi:calendar"></SectionHeader>
-            <FuturePlans></FuturePlans>
-        </div>
-
-        <div class="mb-10">
-            <div class="flex flex-row items-center justify-between">
-                <SectionHeader section-title="Featured Projects" icon-name="mi:favorite"></SectionHeader>
-                <UButton label="View more" trailing-icon="mi:arrow-right" variant="ghost" color="neutral"
-                    class="!hover:bg-transparent bg-transparent! hover:text-primary px-0" to="/projects" target="" />
+        <section class="mb-14">
+            <SectionHeader section-title="Experience" />
+            <WorkExperienceTimeline />
+            <div class="mt-5 sm:pl-[9rem]">
+                <NuxtLink
+                    to="https://www.linkedin.com/in/jonasz-s%C3%B3jka/details/experience/?locale=en-US"
+                    target="_blank" rel="noopener"
+                    class="inline-flex items-center gap-1.5 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-[var(--ink-faint)] transition-colors hover:text-[var(--accent)]">
+                    Full history on LinkedIn
+                    <UIcon name="akar-icons:link-out" class="size-3" />
+                </NuxtLink>
             </div>
-            <FeaturedProjects></FeaturedProjects>
-        </div>
+        </section>
 
-        <div class="mb-10">
-            <SectionHeader section-title="Other" icon-name="cuida:fire-outline"></SectionHeader>
-            <OtherFeatures></OtherFeatures>
-        </div>
+        <section class="mb-14">
+            <SectionHeader section-title="Education" />
+            <EducationalExperienceTimeline />
+        </section>
+
+        <section class="mb-14">
+            <SectionHeader section-title="Stack" />
+            <TechnologyStack />
+        </section>
+
+        <section class="mb-14">
+            <SectionHeader section-title="What's next" />
+            <FuturePlans />
+        </section>
+
+        <section class="mb-14">
+            <div class="flex items-baseline justify-between gap-4">
+                <SectionHeader section-title="Selected work" class="flex-1" />
+                <NuxtLink to="/projects"
+                    class="mb-6 shrink-0 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-[var(--ink-faint)] transition-colors hover:text-[var(--accent)]">
+                    All projects →
+                </NuxtLink>
+            </div>
+            <FeaturedProjects />
+        </section>
+
+        <section>
+            <SectionHeader section-title="Beyond the code" />
+            <OtherFeatures />
+        </section>
     </div>
 </template>
-
-<style></style>

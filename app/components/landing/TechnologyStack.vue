@@ -1,69 +1,68 @@
 <script setup lang="ts">
-import TechnologyIcon from './TechnologyIcon.vue';
+const currentYear = new Date().getFullYear()
 
-const currentYear = new Date().getFullYear();
+type Tech = { name: string; icon: string; since: number; commercialSince?: number }
 
-const getExp = (startYear: number) => {
-    return Math.ceil(currentYear - startYear);
-};
+const groups: { label: string; items: Tech[] }[] = [
+    {
+        label: 'Backend',
+        items: [
+            { name: 'Java', icon: 'devicon:java', since: 2022, commercialSince: 2025 },
+            { name: 'Spring Boot', icon: 'logos:spring-icon', since: 2025, commercialSince: 2025 },
+            { name: 'Gosu / Guidewire', icon: 'file-icons:gosu', since: 2025, commercialSince: 2025 },
+            { name: 'PostgreSQL', icon: 'devicon:postgresql', since: 2025 },
+            { name: 'Kafka', icon: 'simple-icons:apachekafka', since: 2025 },
+            { name: 'RabbitMQ', icon: 'devicon:rabbitmq', since: 2025 },
+        ],
+    },
+    {
+        label: 'Frontend',
+        items: [
+            { name: 'TypeScript', icon: 'logos:typescript-icon', since: 2025 },
+            { name: 'Angular', icon: 'devicon:angular', since: 2025 },
+            { name: 'Vue', icon: 'logos:vue', since: 2025 },
+            { name: 'Nuxt', icon: 'devicon:nuxt', since: 2025 },
+            { name: 'Tailwind', icon: 'devicon:tailwindcss', since: 2025 },
+            { name: 'JavaScript', icon: 'logos:javascript', since: 2025 },
+        ],
+    },
+    {
+        label: 'Tooling',
+        items: [
+            { name: 'Docker', icon: 'logos:docker-icon', since: 2024 },
+            { name: 'Git', icon: 'logos:git-icon', since: 2023, commercialSince: 2025 },
+            { name: 'SQL Server', icon: 'devicon:microsoftsqlserver', since: 2023, commercialSince: 2025 },
+            { name: 'Postman', icon: 'devicon:postman', since: 2025, commercialSince: 2025 },
+            { name: 'Jira', icon: 'devicon:jira', since: 2023, commercialSince: 2023 },
+            { name: 'Confluence', icon: 'devicon:confluence', since: 2023, commercialSince: 2023 },
+        ],
+    },
+]
 
-const getTooltip = (name: string, startYear: number, commercialStartYear?: number) => {
-    const exp = getExp(startYear);
-
-    if (commercialStartYear) {
-        const commercialExp = getExp(commercialStartYear);
-        return `${name} (${exp}y Experience, ${commercialExp}y Commercial)`;
-    }
-
-    return `${name} (${exp}y Experience)`;
-};
+// Years were previously hidden behind a hover tooltip — the one number a
+// recruiter actually scans for, so it now sits on the page.
+const years = (t: Tech) => {
+    const total = Math.max(1, currentYear - t.since)
+    return t.commercialSince
+        ? `${total}y · ${Math.max(1, currentYear - t.commercialSince)}y comm.`
+        : `${total}y`
+}
 </script>
 
 <template>
-    <div class="flex flex-col md:grid grid-cols-2 grid-rows-2">
-        <UPageCard class="m-2">
-            <h3 class="text-center font-bold">Backend</h3>
-            <div class="flex flex-rows gap-3 items-center justify-center">
-                <TechnologyIcon iconName="devicon:java" :iconTooltipText="getTooltip('Java', 2022, 2025)" />
-                <TechnologyIcon iconName="logos:spring-icon"
-                    :iconTooltipText="getTooltip('Spring Framework', 2025, 2025)" />
-                <TechnologyIcon iconName="devicon:postgresql" :iconTooltipText="getTooltip('PostgreSQL', 2025)" />
-                <TechnologyIcon iconName="simple-icons:apachekafka" :iconTooltipText="getTooltip('Kafka', 2025)" />
-                <TechnologyIcon iconName="devicon:rabbitmq" :iconTooltipText="getTooltip('RabbitMQ', 2025)" />
-                <TechnologyIcon iconName="file-icons:gosu"
-                    :iconTooltipText="getTooltip('Gosu | Guidewire', 2025, 2025)" />
-            </div>
-        </UPageCard>
+    <div class="divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
+        <div v-for="group in groups" :key="group.label" class="grid gap-3 py-5 sm:grid-cols-[7.5rem_1fr] sm:gap-0">
+            <p class="eyebrow sm:pt-1.5">{{ group.label }}</p>
 
-        <UPageCard class="m-2">
-            <h3 class="text-center font-bold">Frontend</h3>
-            <div class="flex flex-rows gap-3 items-center justify-center">
-                <TechnologyIcon iconName="logos:vue" :iconTooltipText="getTooltip('Vue', 2025)" />
-                <TechnologyIcon iconName="devicon:angular" :iconTooltipText="getTooltip('Angular', 2025)" />
-                <TechnologyIcon iconName="logos:typescript-icon" :iconTooltipText="getTooltip('TypeScript', 2025)" />
-                <TechnologyIcon iconName="devicon:tailwindcss" :iconTooltipText="getTooltip('Tailwind', 2025)" />
-                <TechnologyIcon iconName="devicon:nuxt" :iconTooltipText="getTooltip('Nuxt', 2025)" />
-                <TechnologyIcon iconName="logos:javascript" :iconTooltipText="getTooltip('JavaScript', 2025)" />
-            </div>
-        </UPageCard>
-
-        <UPageCard class="m-2 overflow-hidden justify-center align-center md:col-span-2">
-            <h3 class="text-center font-bold">Other</h3>
-            <div class="flex flex-rows flex-wrap gap-3 items-center justify-center">
-                <TechnologyIcon iconName="logos:docker-icon" :iconTooltipText="getTooltip('Docker', 2024)" />
-                <TechnologyIcon iconName="logos:visual-studio-code"
-                    :iconTooltipText="getTooltip('Visual Studio Code', 2023)" />
-                <TechnologyIcon iconName="logos:jetbrains" :iconTooltipText="getTooltip('JetBrains', 2022, 2025)" />
-                <TechnologyIcon iconName="logos:git-icon" :iconTooltipText="getTooltip('Git', 2023, 2025)" />
-                <TechnologyIcon iconName="streamline-logos:github-logo-2-solid"
-                    :iconTooltipText="getTooltip('GitHub', 2023)" />
-                <TechnologyIcon iconName="logos:bitbucket" :iconTooltipText="getTooltip('Bitbucket', 2025, 2025)" />
-                <TechnologyIcon iconName="devicon:microsoftsqlserver"
-                    :iconTooltipText="getTooltip('Microsoft SQL Server', 2023, 2025)" />
-                <TechnologyIcon iconName="devicon:postman" :iconTooltipText="getTooltip('Postman', 2025, 2025)" />
-                <TechnologyIcon iconName="devicon:jira" :iconTooltipText="getTooltip('Jira', 2023, 2023)" />
-                <TechnologyIcon iconName="devicon:confluence" :iconTooltipText="getTooltip('Confluence', 2023, 2023)" />
-            </div>
-        </UPageCard>
+            <ul class="grid grid-cols-1 gap-x-6 gap-y-2.5 xs:grid-cols-2 sm:pl-6">
+                <li v-for="tech in group.items" :key="tech.name" class="flex items-center gap-2.5">
+                    <UIcon :name="tech.icon" class="size-4 shrink-0 opacity-90" />
+                    <span class="text-sm text-[var(--ink)]">{{ tech.name }}</span>
+                    <span class="ml-auto font-mono text-[0.6875rem] tabular-nums text-[var(--ink-faint)]">
+                        {{ years(tech) }}
+                    </span>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>

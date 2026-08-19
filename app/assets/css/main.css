@@ -1,42 +1,190 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-@tailwind utilities;
+/*
+  "Policy schedule" — the visual language of the documents Jonasz works on:
+  insurance policies, technical specs, structured records. Warm paper instead
+  of glare-white, ink instead of pure black, hairline rules instead of shadows,
+  and monospace reserved strictly for data (dates, tech, reference labels).
+*/
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "IBM Plex Serif", ui-serif, Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
 
 :root {
-  --font-sans: "Plus Jakarta Sans", sans-serif;
-  --font-mono: "Inconsolata", monospace;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  /* --font-sans: "Geist", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-  font-family: "Geist", sans-serif; */
+  /* Paper */
+  --paper: #f7f6f2;
+  --paper-raised: #fffefb;
+  --paper-sunken: #f1f0ea;
 
-  --ui-primary: var(--color-emerald-500);
-  --ui-neutral: var(--color-zinc-500);
-  background-color: var(--color-zinc-50);
-  color: var(--color-zinc-900);
+  /* Ink — a green-shifted near-black, never #000: keeps text contrast
+     around 12:1 rather than the 21:1 that made the old page feel harsh. */
+  --ink: #242b28;
+  --ink-strong: #131916;
+  --ink-muted: #5f6864;
+  --ink-faint: #8a928e;
+
+  /* Rules */
+  --rule: #e4e5df;
+  --rule-strong: #cdd1c9;
+
+  /* Accent — deep evergreen. Same green lineage as before, dropped several
+     stops so it reads as a considered brand colour, not a neon highlighter. */
+  --accent: #0f5f4c;
+  --accent-hover: #0b4a3b;
+  --accent-soft: #e8f1ed;
+
+  /* Nuxt UI token mapping — every UCard/UButton/UTabs inherits from here. */
+  --ui-primary: var(--accent);
+  --ui-bg: var(--paper);
+  --ui-bg-muted: var(--paper-sunken);
+  --ui-bg-elevated: var(--paper-raised);
+  --ui-bg-accented: var(--paper-sunken);
+  --ui-border: var(--rule);
+  --ui-border-muted: var(--rule);
+  --ui-border-accented: var(--rule-strong);
+  --ui-text: var(--ink);
+  --ui-text-highlighted: var(--ink-strong);
+  --ui-text-toned: var(--ink-muted);
+  --ui-text-muted: var(--ink-muted);
+  --ui-text-dimmed: var(--ink-faint);
+  --ui-radius: 0.25rem;
+
+  font-family: var(--font-sans);
+  background-color: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
 }
-.dark {
-  --ui-primary: var(--color-emerald-400);
-  --ui-neutral: var(--color-zinc-400);
-  background-color: var(--color-zinc-950);
-  color: var(--color-zinc-100);
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+/* Eyebrow: the small mono label that opens each section. Reads as a field
+   name on a form, which is the point. */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* The date rail: a fixed-width monospace column with a hairline running down
+   its right edge, so every record lines up like rows on a schedule. */
+.rail {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem 0;
+}
+
+@media (min-width: 640px) {
+  .rail {
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0;
+  }
+}
+
+.rail-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  padding-bottom: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .rail-date {
+    padding: 0.125rem 1.25rem 2.25rem 0;
+    text-align: right;
+    border-right: 1px solid var(--rule);
+  }
+}
+
+.rail-body {
+  padding-bottom: 2.25rem;
+}
+
+@media (min-width: 640px) {
+  .rail-body {
+    padding: 0 0 2.25rem 1.5rem;
+  }
+}
+
+.rail-row:last-child .rail-date,
+.rail-row:last-child .rail-body {
+  padding-bottom: 0;
+}
+
+/* Marker sits on the rule itself, tying each record to the timeline. */
+/* left:0 is the grid column edge, which is exactly where the date column's
+   border-right sits — so the dot straddles the rule instead of drifting into
+   the date text. */
+.rail-marker {
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1.5px solid var(--rule-strong);
+  transform: translateX(-50%);
+}
+
+.rail-row:first-child .rail-marker {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Quiet, legible focus ring in the accent colour. */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--paper-sunken);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--ui-primary);
+  background-color: var(--rule-strong);
+  border: 3px solid var(--paper-sunken);
   border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ink-faint);
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--ui-primary) transparent;
+  scrollbar-color: var(--rule-strong) var(--paper-sunken);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

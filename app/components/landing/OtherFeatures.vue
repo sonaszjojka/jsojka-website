@@ -1,34 +1,31 @@
 <script setup lang="ts">
-const cards = ref([
+const notes = [
     {
-        title: "Get to know me better",
-        description: "You're not just hiring a specialist — you're choosing a person you'll collaborate with every day. Contact me to see if we're a good fit.",
-        icon: 'bx:wink-smile',
+        title: 'Reading widely',
+        body: 'Learning across disciplines is what keeps my perspective — and my solutions — from narrowing.',
+    },
+    {
+        title: 'The gym, most mornings',
+        body: 'Part routine, part discipline practice. It clears my head before the hard problems start.',
+    },
+    {
+        title: 'Open to collaboration',
+        body: "Side projects, contract work, or a conversation about something you're building.",
         to: '/contact',
-        variant: 'soft' as const,
+        cta: 'Get in touch',
     },
-    {
-        title: 'I love reading books!',
-        description: 'I believe that learning across different disciplines expands perspective and fuels creativity.',
-        icon: 'tabler:book',
-    },
-    {
-        title: 'Gym',
-        icon: 'iconoir:gym',
-        description: 'Going to the gym is part of my routine to stay healthy, clear my mind, and build discipline over time.',
-    },
-    {
-        title: "Other collaborations",
-        description: "I'm open to various forms of collaboration — feel free to reach out if you have something in mind.",
-        icon: 'carbon:collaborate',
-        to: '/contact',
-        variant: 'soft' as const,
-    }
-])
+]
 </script>
 
 <template>
-    <UPageGrid class="grid-cols-1 lg:grid-cols-2 gap-4">
-        <UPageCard v-for="(card, index) in cards" :key="index" v-bind="card" />
-    </UPageGrid>
+    <div class="grid gap-x-8 gap-y-6 sm:grid-cols-3">
+        <div v-for="note in notes" :key="note.title" class="border-t border-[var(--rule)] pt-4">
+            <h3 class="text-sm font-semibold tracking-tight text-[var(--ink-strong)]">{{ note.title }}</h3>
+            <p class="mt-2 font-serif text-[0.9375rem] leading-relaxed text-[var(--ink-muted)]">{{ note.body }}</p>
+            <NuxtLink v-if="note.to" :to="note.to"
+                class="mt-3 inline-block font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-[var(--accent)] hover:text-[var(--accent-hover)]">
+                {{ note.cta }} →
+            </NuxtLink>
+        </div>
+    </div>
 </template>
