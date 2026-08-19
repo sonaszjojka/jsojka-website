@@ -1,7 +1,6 @@
-# Sample workflow for building and deploying a Nuxt site to GitHub Pages
+# Builds the Nuxt site and deploys it to GitHub Pages.
 #
-# To get started with Nuxt see: https://nuxtjs.org/docs/get-started/installation
-#
+# To get started with Nuxt see: https://nuxt.com/docs/getting-started/installation
 name: Deploy Nuxt site to Pages
 
 on:
@@ -30,49 +29,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
+        uses: actions/checkout@v7
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          node-version: "22"
+          cache: npm
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v5
-        with:
-          static_site_generator: nuxt
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            .output
-            .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('.output/public') }}
-          restore-keys: |
-            ${{ runner.os }}-nuxt-build-
+        # Deliberately no `static_site_generator: nuxt`. That option writes a
+        # Nuxt 2 config (`router.base`, `target: static`), and because it only
+        # looks for nuxt.config.{js,cjs,mjs} it does not see our nuxt.config.ts
+        # and creates a nuxt.config.js instead. That generated file wins during
+        # config resolution and drops our `modules` and `css`, which builds the
+        # site without Nuxt UI, Tailwind or main.css. We set the base path
+        # ourselves via NUXT_APP_BASE_URL below.
+        uses: actions/configure-pages@v6
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: npm ci
       - name: Static HTML export with Nuxt
-        run: ${{ steps.detect-package-manager.outputs.manager }} run generate
+        run: npm run generate
         env:
+          # "/jsojka-website" for a project page, "" for a user page, which
+          # nuxt.config.ts falls back to "/" for.
           NUXT_APP_BASE_URL: ${{ steps.pages.outputs.base_path }}
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./.output/public
 
