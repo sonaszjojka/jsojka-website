@@ -30,7 +30,8 @@ const title = computed(() => "~" + route.path)
         <UNavigationMenu :items="items" />
 
         <template #right>
-            <UUser name='Jonasz Sójka' description="Software Engineer" :avatar="{ src: '/profile_picture_js.png' }"
+            <UUser name='Jonasz Sójka' description="Software Engineer"
+                :avatar="{ src: useAssetUrl('/profile_picture_js.png') }"
                 target="_blank" />
         </template>
 

@@ -19,7 +19,7 @@ const items = ref<TimelineItem[]>([
         title: 'I am here!',
         description: "Currently learning Frontend and waiting for the beginning of University.",
         avatar: {
-            src: '/profile_picture_js.png',
+            src: useAssetUrl('/profile_picture_js.png'),
         },
     },
     {

@@ -7,7 +7,7 @@ const items = ref<TimelineItem[]>([
         title: "Bachelor of Engineering - Computer Science",
         description: "Polish-Japanese Academy of Information Technology. Grade: 5. Specialization in databases and web applications.",
         avatar: {
-            src: "/pjatk_logo.png",
+            src: useAssetUrl("/pjatk_logo.png"),
             loading: "lazy" as const,
         },
         value: "pjatkb",

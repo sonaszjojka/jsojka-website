@@ -13,7 +13,7 @@ const posts = ref<BlogPostProps[]>([
     {
         title: 'Gamilife - Thesis',
         description: 'Web-based task and habit management system with gamification, budgeting, and group collaboration features.',
-        image: '/gamilife_logo.png',
+        image: useAssetUrl('/gamilife_logo.png'),
         date: 'Oct 2025 - Feb 2026',
         to: '/projects/1',
     }

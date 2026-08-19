@@ -23,7 +23,7 @@ import SocialsAnchor from './SocialsAnchor.vue';
                 <SocialsAnchor></SocialsAnchor>
             </div>
             <div>
-                <img src="/profile_picture_js.png" alt="jonasz_sójka"
+                <img :src="useAssetUrl('/profile_picture_js.png')" alt="jonasz_sójka"
                     class="hidden md:block size-70 rounded-full border-primary border-5" />
             </div>
         </div>
