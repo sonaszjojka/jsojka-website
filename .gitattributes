@@ -1,0 +1,25 @@
+# core.autocrlf is true in this environment, and git only auto-detects a file
+# as binary when it finds a NUL byte early on. A PDF often has none, so it was
+# treated as text: line endings were rewritten and invalid bytes replaced with
+# U+FFFD, which silently destroyed the résumé. Declare binaries explicitly.
+
+* text=auto
+
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.avif  binary
+*.ico   binary
+*.svgz  binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.eot   binary
+*.zip   binary
+*.gz    binary
+*.mp4   binary
+*.webm  binary
