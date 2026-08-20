@@ -14,7 +14,7 @@ const links = [
                 Jonasz Sójka · {{ new Date().getFullYear() }}
             </p>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-4 print:hidden">
                 <NuxtLink v-for="link in links" :key="link.label" :to="link.to" target="_blank" rel="noopener"
                     :aria-label="link.label"
                     class="text-[var(--ink-faint)] transition-colors hover:text-[var(--accent)]">

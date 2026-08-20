@@ -24,7 +24,6 @@
   --accent-hover: #0b4a3b;
   --accent-soft: #e8f1ed;
 
-  /* Nuxt UI token mapping — every UCard/UButton/UTabs inherits from here. */
   --ui-primary: var(--accent);
   --ui-bg: var(--paper);
   --ui-bg-muted: var(--paper-sunken);
@@ -105,9 +104,6 @@ body {
   padding-bottom: 0;
 }
 
-/* left:0 is the grid column edge, which is exactly where the date column's
-   border-right sits — so the dot straddles the rule instead of drifting into
-   the date text. */
 .rail-marker {
   position: absolute;
   left: 0;
@@ -129,6 +125,70 @@ body {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+.copy-field {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.copy-hint {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  opacity: 0;
+  transition: opacity 160ms ease, color 160ms ease;
+}
+
+.copy-field:hover .copy-hint,
+.copy-field:focus-visible .copy-hint,
+.copy-hint.is-copied,
+.copy-hint.is-static {
+  opacity: 1;
+}
+
+.copy-field:hover .copy-hint,
+.copy-hint.is-copied {
+  color: var(--accent);
+}
+
+.verify-link,
+.verify-course {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  transition: color 160ms ease;
+}
+
+.verify-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.verify-link:hover,
+.verify-course:hover {
+  color: var(--accent);
+}
+
+.verify-course {
+  text-transform: none;
+  letter-spacing: 0;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.verify-course:hover {
+  text-decoration-color: var(--rule-strong);
 }
 
 ::-webkit-scrollbar {
@@ -167,5 +227,69 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  :root {
+    --paper: #fff;
+    --paper-raised: #fff;
+    --paper-sunken: #fff;
+    --accent-soft: #fff;
+
+    --ink: #1a1a1a;
+    --ink-strong: #000;
+    --ink-muted: #333;
+    --ink-faint: #555;
+    --rule: #c8c8c8;
+    --rule-strong: #999;
+
+    font-size: 11pt;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .min-h-screen {
+    min-height: 0 !important;
+  }
+
+  header.sticky {
+    display: none !important;
+  }
+
+  main a[href^="http"]::after,
+  footer a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 400;
+    color: #666;
+    word-break: break-all;
+  }
+
+  a[href^="mailto"]::after {
+    content: none;
+  }
+
+  .rail-date,
+  .rail-body,
+  li {
+    break-inside: avoid;
+  }
+
+  section {
+    break-inside: auto;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
   }
 }

@@ -7,20 +7,25 @@ const channels = [
         value: 'jonasz.sojkaa@gmail.com',
         to: 'mailto:jonasz.sojkaa@gmail.com',
         icon: 'mi:email',
+        copyValue: 'jonasz.sojkaa@gmail.com',
     },
     {
         label: 'LinkedIn',
         value: 'jonasz-sójka',
         to: 'https://www.linkedin.com/in/jonasz-s%C3%B3jka/',
         icon: 'i-simple-icons-linkedin',
+        copyValue: 'https://www.linkedin.com/in/jonasz-s%C3%B3jka/',
     },
     {
         label: 'GitHub',
         value: 'sonaszjojka',
         to: 'https://github.com/sonaszjojka',
         icon: 'i-simple-icons-github',
+        copyValue: 'https://github.com/sonaszjojka',
     },
 ]
+
+const { copy, isCopied } = useCopyToClipboard()
 </script>
 
 <template>
@@ -35,20 +40,27 @@ const channels = [
         </p>
 
         <div class="mt-10 divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
-            <NuxtLink v-for="channel in channels" :key="channel.label" :to="channel.to" target="_blank" rel="noopener"
-                class="group grid items-center gap-1 py-4 sm:grid-cols-[7.5rem_1fr_auto] sm:gap-0">
+            <div v-for="channel in channels" :key="channel.label"
+                class="grid items-center gap-1 py-4 sm:grid-cols-[7.5rem_1fr_auto] sm:gap-0">
                 <span class="eyebrow">{{ channel.label }}</span>
 
-                <span class="flex items-center gap-2.5 sm:pl-6">
+                <NuxtLink :to="channel.to" target="_blank" rel="noopener"
+                    class="group flex items-center gap-2.5 sm:pl-6">
                     <UIcon :name="channel.icon" class="size-4 shrink-0 text-[var(--ink-faint)]" />
                     <span class="text-[var(--ink)] transition-colors group-hover:text-[var(--accent)]">
                         {{ channel.value }}
                     </span>
-                </span>
+                    <UIcon name="akar-icons:link-out"
+                        class="hidden size-3.5 text-[var(--ink-faint)] transition-colors group-hover:text-[var(--accent)] sm:block print:hidden" />
+                </NuxtLink>
 
-                <UIcon name="akar-icons:link-out"
-                    class="hidden size-3.5 text-[var(--ink-faint)] transition-colors group-hover:text-[var(--accent)] sm:block" />
-            </NuxtLink>
+                <button type="button" class="copy-field justify-self-start text-sm sm:justify-self-end print:hidden"
+                    :aria-label="`Copy ${channel.label}`" @click="copy(channel.copyValue, channel.label)">
+                    <span class="copy-hint is-static" :class="{ 'is-copied': isCopied(channel.label) }">
+                        {{ isCopied(channel.label) ? 'copied' : 'copy' }}
+                    </span>
+                </button>
+            </div>
         </div>
 
         <p class="mt-8 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-[var(--ink-faint)]">
