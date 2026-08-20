@@ -23,6 +23,7 @@
   --accent: #0f5f4c;
   --accent-hover: #0b4a3b;
   --accent-soft: #e8f1ed;
+  --on-accent: #ffffff;
 
   --ui-primary: var(--accent);
   --ui-bg: var(--paper);
@@ -43,6 +44,35 @@
   background-color: var(--paper);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
+}
+
+/* The same record sheet after dark: ground and ink swap roles, the evergreen
+   lifts far enough to carry on a dark ground, and every ratio stays at or above
+   its light-mode counterpart. Only the base tokens are redefined — the --ui-*
+   mappings above resolve through them, so Nuxt UI follows automatically.
+   Overrides Nuxt UI's own .dark block, which sits in @layer theme and so loses
+   to these unlayered rules. */
+.dark {
+  --paper: #141917;
+  --paper-raised: #1c221f;
+  --paper-sunken: #0f1412;
+
+  --ink: #d3d9d5;
+  --ink-strong: #eef2ef;
+  --ink-muted: #98a29d;
+  --ink-faint: #6d7873;
+
+  --rule: #272e2a;
+  --rule-strong: #3b443f;
+
+  --accent: #5ec9a6;
+  --accent-hover: #7dd9bb;
+  --accent-soft: #16302a;
+  /* White on the lifted accent is 2:1 — unreadable. Text sitting on an accent
+     fill has to invert with the theme, so it gets its own token. */
+  --on-accent: #0b1512;
+
+  color-scheme: dark;
 }
 
 body {
@@ -235,11 +265,16 @@ body {
     margin: 14mm;
   }
 
-  :root {
+  /* `.dark` too: a visitor reading in dark mode must still get white paper and
+     black toner, not an inverted page that empties the cartridge. */
+  :root,
+  .dark {
     --paper: #fff;
     --paper-raised: #fff;
     --paper-sunken: #fff;
     --accent-soft: #fff;
+    --accent: #0f5f4c;
+    --on-accent: #fff;
 
     --ink: #1a1a1a;
     --ink-strong: #000;
@@ -248,6 +283,7 @@ body {
     --rule: #c8c8c8;
     --rule-strong: #999;
 
+    color-scheme: light;
     font-size: 11pt;
   }
 
