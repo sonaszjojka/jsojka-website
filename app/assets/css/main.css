@@ -1,13 +1,6 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-/*
-  "Policy schedule" — the visual language of the documents Jonasz works on:
-  insurance policies, technical specs, structured records. Warm paper instead
-  of glare-white, ink instead of pure black, hairline rules instead of shadows,
-  and monospace reserved strictly for data (dates, tech, reference labels).
-*/
-
 @theme {
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "IBM Plex Serif", ui-serif, Georgia, serif;
@@ -15,24 +8,18 @@
 }
 
 :root {
-  /* Paper */
   --paper: #f7f6f2;
   --paper-raised: #fffefb;
   --paper-sunken: #f1f0ea;
 
-  /* Ink — a green-shifted near-black, never #000: keeps text contrast
-     around 12:1 rather than the 21:1 that made the old page feel harsh. */
   --ink: #242b28;
   --ink-strong: #131916;
   --ink-muted: #5f6864;
   --ink-faint: #8a928e;
 
-  /* Rules */
   --rule: #e4e5df;
   --rule-strong: #cdd1c9;
 
-  /* Accent — deep evergreen. Same green lineage as before, dropped several
-     stops so it reads as a considered brand colour, not a neon highlighter. */
   --accent: #0f5f4c;
   --accent-hover: #0b4a3b;
   --accent-soft: #e8f1ed;
@@ -64,8 +51,6 @@ body {
   color: var(--ink);
 }
 
-/* Eyebrow: the small mono label that opens each section. Reads as a field
-   name on a form, which is the point. */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -75,8 +60,6 @@ body {
   color: var(--ink-faint);
 }
 
-/* The date rail: a fixed-width monospace column with a hairline running down
-   its right edge, so every record lines up like rows on a schedule. */
 .rail {
   display: grid;
   grid-template-columns: 1fr;
@@ -122,7 +105,6 @@ body {
   padding-bottom: 0;
 }
 
-/* Marker sits on the rule itself, tying each record to the timeline. */
 /* left:0 is the grid column edge, which is exactly where the date column's
    border-right sits — so the dot straddles the rule instead of drifting into
    the date text. */
@@ -143,7 +125,6 @@ body {
   border-color: var(--accent);
 }
 
-/* Quiet, legible focus ring in the accent colour. */
 :where(a, button, [tabindex]):focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;

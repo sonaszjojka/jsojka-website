@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// Split into summary + stack: the old single pipe-delimited string held the
-// same facts but gave a recruiter nothing to scan.
 const roles = [
     {
         from: "2025.11",

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 defineProps<{
     sectionTitle?: string
-    /** Kept for call-site compatibility; the eyebrow carries the label instead. */
     iconName?: string
 }>()
 </script>

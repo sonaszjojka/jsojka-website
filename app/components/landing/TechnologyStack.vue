@@ -39,8 +39,6 @@ const groups: { label: string; items: Tech[] }[] = [
     },
 ]
 
-// Years were previously hidden behind a hover tooltip — the one number a
-// recruiter actually scans for, so it now sits on the page.
 const years = (t: Tech) => {
     const total = Math.max(1, currentYear - t.since)
     return t.commercialSince

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-// Ordered by weight in the job market rather than by date: a proctored vendor
-// exam first, then the domain credentials that match the work he actually
-// does, then course completions.
 const certs = [
     {
         date: '2026.07',
@@ -22,8 +19,6 @@ const certs = [
     },
 ]
 
-// Ten short courses; listed in full but grouped, so they read as a body of
-// study rather than ten separate credentials.
 const courses = {
     date: '2026.07',
     note: '— 2026.08',

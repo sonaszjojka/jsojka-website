@@ -10,10 +10,10 @@ import TechnologyStack from '~/components/landing/TechnologyStack.vue';
 import WorkExperienceTimeline from '~/components/landing/WorkExperienceTimeline.vue';
 
 useHead({
-    title: 'Jonasz Sójka — Backend engineer',
+    title: 'Jonasz Sójka — Software Engineer',
     meta: [{
         name: 'description',
-        content: 'Backend engineer working on insurance policy systems with Guidewire, Java and Spring Boot.',
+        content: "I build backend systems that make sense — Java and Spring Boot, three years in, with Guidewire along the way. With a business analyst's background, so I build for the problem, not just the ticket.",
     }],
 })
 </script>
@@ -26,8 +26,7 @@ useHead({
             <SectionHeader section-title="Experience" />
             <WorkExperienceTimeline />
             <div class="mt-5 sm:pl-[9rem]">
-                <NuxtLink
-                    to="https://www.linkedin.com/in/jonasz-s%C3%B3jka/details/experience/?locale=en-US"
+                <NuxtLink to="https://www.linkedin.com/in/jonasz-s%C3%B3jka/details/experience/?locale=en-US"
                     target="_blank" rel="noopener"
                     class="inline-flex items-center gap-1.5 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-[var(--ink-faint)] transition-colors hover:text-[var(--accent)]">
                     Full history on LinkedIn
