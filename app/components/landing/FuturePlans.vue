@@ -15,13 +15,13 @@ const plan = [
     {
         period: 'now',
         title: 'Where I am',
-        detail: 'Shipping Guidewire integrations at VHV while sharpening the frontend half.',
+        detail: 'Shipping REST and SOAP integrations at VHV while sharpening the frontend half.',
         state: 'current' as const,
     },
     {
         period: '2026—2028',
-        title: "Master's — Architecture of IT Systems",
-        detail: 'System design and IT architecture, starting October 2026.',
+        title: "Master's — Information Management",
+        detail: 'Specialisation in IT systems architecture, starting October 2026.',
         state: 'planned' as const,
     },
 ]

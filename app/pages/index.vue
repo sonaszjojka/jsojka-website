@@ -13,7 +13,7 @@ useHead({
     title: 'Jonasz Sójka — Software Engineer',
     meta: [{
         name: 'description',
-        content: "I build backend systems that make sense — Java and Spring Boot, three years in, with Guidewire along the way. With a business analyst's background, so I build for the problem, not just the ticket.",
+        content: "I build backend systems that make sense — REST and SOAP integrations in Java and Spring Boot, three years in, the last one professionally at VHV Gruppe. With a business analyst's background, so I build for the problem, not just the ticket.",
     }],
 })
 </script>

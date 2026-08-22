@@ -12,7 +12,7 @@ const certs: Cert[] = [
     {
         date: '2026.07',
         note: 'valid to 2029.07',
-        name: 'AWS Cloud Practitioner (CLF-C02)',
+        name: 'AWS Certified Cloud Practitioner (CLF-C02)',
         issuer: 'Amazon Web Services',
         credential: 'd3b88d60dacb4a19b481df96b8482955',
         verify: 'https://cp.certmetrics.com/amazon/en/public/verify/credential/d3b88d60dacb4a19b481df96b8482955',
