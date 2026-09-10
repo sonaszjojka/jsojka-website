@@ -10,6 +10,13 @@ type Cert = {
 
 const certs: Cert[] = [
     {
+        date: '2026.09',
+        name: 'Apache Kafka Series — Learn Apache Kafka for Beginners v3',
+        issuer: 'Udemy',
+        credential: 'UC-04df7aa2-3013-4da4-a5a8-fed1bfde958e',
+        verify: 'https://www.udemy.com/certificate/UC-04df7aa2-3013-4da4-a5a8-fed1bfde958e/',
+    },
+    {
         date: '2026.07',
         note: 'valid to 2029.07',
         name: 'AWS Certified Cloud Practitioner (CLF-C02)',
