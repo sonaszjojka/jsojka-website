@@ -11,6 +11,13 @@ type Cert = {
 const certs: Cert[] = [
     {
         date: '2026.09',
+        name: 'Docker Mastery: with Kubernetes +Swarm from a Docker Captain',
+        issuer: 'Udemy',
+        credential: 'UC-bcab476d-f120-491c-8c60-a2b06762199c',
+        verify: 'https://www.udemy.com/certificate/UC-bcab476d-f120-491c-8c60-a2b06762199c/',
+    },
+    {
+        date: '2026.09',
         name: 'Apache Kafka Series — Learn Apache Kafka for Beginners v3',
         issuer: 'Udemy',
         credential: 'UC-04df7aa2-3013-4da4-a5a8-fed1bfde958e',
