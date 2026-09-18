@@ -15,7 +15,6 @@ const groups: { label: string; items: Tech[] }[] = [
             { name: 'REST & SOAP', icon: 'lucide:webhook', since: '2025.10', commercialSince: '2025.11' },
             { name: 'Hibernate / JPA', icon: 'devicon:hibernate', since: '2025.10' },
             { name: 'JUnit 5 / Mockito', icon: 'devicon:junit', since: '2025.10' },
-            { name: 'RabbitMQ', icon: 'devicon:rabbitmq', since: '2025.10' },
             { name: 'Kafka', icon: 'simple-icons:apachekafka', since: '2025.10' },
             { name: 'Python', icon: 'devicon:python', since: '2023.10' },
         ],
