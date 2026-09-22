@@ -11,6 +11,13 @@ type Cert = {
 const certs: Cert[] = [
     {
         date: '2026.09',
+        name: 'Software Architecture & Design of Modern Large Scale Systems',
+        issuer: 'Udemy',
+        credential: 'UC-d5198844-907e-46f2-951b-77460e0da641',
+        verify: 'https://www.udemy.com/certificate/UC-d5198844-907e-46f2-951b-77460e0da641/',
+    },
+    {
+        date: '2026.09',
         name: 'Docker Mastery: with Kubernetes +Swarm from a Docker Captain',
         issuer: 'Udemy',
         credential: 'UC-bcab476d-f120-491c-8c60-a2b06762199c',
