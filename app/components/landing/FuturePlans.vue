@@ -13,15 +13,21 @@ const plan = [
         state: 'done' as const,
     },
     {
-        period: 'now',
-        title: 'Where I am',
-        detail: 'Shipping REST and SOAP integrations at VHV while sharpening the frontend half.',
+        period: '2026—2028',
+        title: "Master's — Information Management",
+        detail: 'Specialisation in IT systems architecture, from October 2026 through July 2028.',
         state: 'current' as const,
     },
     {
-        period: '2026—2028',
-        title: "Master's — Information Management",
-        detail: 'Specialisation in IT systems architecture, starting October 2026.',
+        period: '2026.10—2028',
+        title: 'Hands-on projects',
+        detail: 'Putting recent learning into practice: event-driven services on Kafka and Spring, containerised with Docker, deployed on AWS and shaped by system design principles, leading up to the master\'s thesis. The stack will grow as I keep learning. Details coming soon.',
+        state: 'current' as const,
+    },
+    {
+        period: '2026.12—2027.01',
+        title: 'AWS Certified Solutions Architect — Associate',
+        detail: 'Estimated for December 2026 or January 2027.',
         state: 'planned' as const,
     },
 ]
