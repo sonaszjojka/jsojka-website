@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SealedTeaser from '~/components/landing/SealedTeaser.vue';
+
 const plan = [
     {
         period: '2022+',
@@ -21,8 +23,9 @@ const plan = [
     {
         period: '2026.10—2028',
         title: 'Hands-on projects',
-        detail: 'Putting recent learning into practice: event-driven services on Kafka and Spring, containerised with Docker, deployed on AWS and shaped by system design principles, leading up to the master\'s thesis. The stack will grow as I keep learning. Details coming soon.',
+        detail: 'Putting recent learning into practice: event-driven services on Kafka and Spring, containerised with Docker, deployed on AWS and shaped by system design principles, leading up to the master\'s thesis. The stack will grow as I keep learning.',
         state: 'current' as const,
+        sealed: true,
     },
     {
         period: '2026.12—2027.01',
@@ -52,6 +55,7 @@ const plan = [
                 <p class="mt-1 font-serif text-[0.9375rem] leading-relaxed text-[var(--ink-muted)]">
                     {{ step.detail }}
                 </p>
+                <SealedTeaser v-if="step.sealed" class="mt-3" />
             </div>
         </li>
     </ol>
