@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import LocationTeaser from './LocationTeaser.vue';
 import SocialsAnchor from './SocialsAnchor.vue';
 
 const focus = ["Java", "Spring Boot", "Guidewire", "AWS", "PostgreSQL"]
@@ -14,7 +15,7 @@ const languages = [
     <header class="pt-14 pb-12">
         <div class="flex flex-col-reverse gap-8 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
             <div class="min-w-0">
-                <p class="eyebrow">Software Engineer · Java Backend · Warsaw, Poland</p>
+                <p class="eyebrow">Software Engineer · Java Backend · <LocationTeaser /></p>
 
                 <h1 class="mt-3 text-[2.5rem] leading-[1.05] font-semibold tracking-[-0.03em] text-[var(--ink-strong)]">
                     Jonasz Sójka

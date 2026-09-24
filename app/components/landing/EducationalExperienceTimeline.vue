@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import RailDate from '~/components/shared/RailDate.vue';
+
 const education = [
     {
         from: "2026.10",
@@ -8,7 +10,7 @@ const education = [
         summary: "Specialisation in IT systems architecture.",
         tags: ["IT systems architecture", "System design"],
         logo: "/pjatk_logo.png",
-        upcoming: true,
+        current: true,
     },
     {
         from: "2022.10",
@@ -18,7 +20,7 @@ const education = [
         summary: "Specialisation in databases. Diploma grade: 5.0/5.0.",
         tags: ["Databases", "Engineering thesis", "Web applications"],
         logo: "/pjatk_logo.png",
-        upcoming: false,
+        current: false,
     },
 ]
 </script>
@@ -27,16 +29,12 @@ const education = [
     <div class="rail">
         <div v-for="entry in education" :key="entry.org" class="rail-row contents">
             <div class="rail-date">
-                <div>{{ entry.from }}</div>
-                <div class="hidden sm:block text-[var(--rule-strong)] leading-tight" aria-hidden="true">|</div>
-                <div>{{ entry.to }}</div>
+                <RailDate :from="entry.from" :to="entry.to" />
             </div>
 
             <div class="rail-body relative">
-                <!-- The master's has not started yet, so it must not inherit the
-                     filled "current" marker the rail gives its first row. -->
-                <span class="rail-marker hidden sm:block"
-                    :class="entry.upcoming && 'bg-[var(--paper)]! border-[var(--rule-strong)]!'" aria-hidden="true" />
+                <span class="rail-marker" :class="entry.current ? 'is-current' : 'is-done'"
+                    aria-hidden="true" />
 
                 <div class="flex items-center gap-2.5">
                     <img :src="useAssetUrl(entry.logo)" :alt="`${entry.org} logo`" loading="lazy"
@@ -46,7 +44,7 @@ const education = [
 
                 <p class="mt-1.5 flex flex-wrap items-baseline gap-x-2 font-medium text-[var(--ink)]">
                     {{ entry.role }}
-                    <span v-if="entry.upcoming" class="eyebrow">Starts October 2026</span>
+                    <span v-if="entry.current" class="eyebrow text-[var(--accent)]!">In progress</span>
                 </p>
                 <p class="mt-1 font-serif text-[0.9375rem] leading-relaxed text-[var(--ink-muted)]">
                     {{ entry.summary }}

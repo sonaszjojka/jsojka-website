@@ -103,6 +103,10 @@ body {
 }
 
 .rail-date {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.375rem;
+  align-items: baseline;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.5;
@@ -113,6 +117,7 @@ body {
 
 @media (min-width: 640px) {
   .rail-date {
+    display: block;
     padding: 0.125rem 1.25rem 2.25rem 0;
     text-align: right;
     border-right: 1px solid var(--rule);
@@ -149,6 +154,63 @@ body {
 .rail-row:first-child .rail-marker {
   background: var(--accent);
   border-color: var(--accent);
+}
+
+/* Explicit states for rails where "first row" is not the same as "happening
+   now". Chained through .rail-row so they win over the first-child default. */
+.rail-row .rail-marker.is-done {
+  top: 5px;
+  width: 13px;
+  height: 13px;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* The tick, drawn as the two lower sides of a rotated box. */
+.rail-row .rail-marker.is-done::after {
+  content: "";
+  position: absolute;
+  left: 3.5px;
+  top: 1.5px;
+  width: 3.5px;
+  height: 6.5px;
+  border: solid var(--on-accent);
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+
+.rail-row .rail-marker.is-current {
+  top: 7px;
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  animation: rail-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes rail-pulse {
+  50% {
+    box-shadow: 0 0 0 5px var(--accent-soft);
+  }
+}
+
+.rail-row .rail-marker.is-planned {
+  background: var(--paper);
+  border-color: var(--rule-strong);
+}
+
+/* Without the vertical rule on phones, the marker moves in beside the title
+   and both columns indent to clear it. */
+@media (max-width: 639px) {
+  .rail-date,
+  .rail-body {
+    padding-left: 1.25rem;
+  }
+
+  .rail-marker {
+    left: 0.375rem;
+  }
 }
 
 :where(a, button, [tabindex]):focus-visible {

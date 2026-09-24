@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import RailDate from '~/components/shared/RailDate.vue';
+
 const roles = [
     {
         from: "2025.11",
@@ -6,7 +8,7 @@ const roles = [
         org: "VHV Gruppe",
         role: "Junior Software Engineer",
         summary: "REST and SOAP integrations in Java and Spring Boot, insurance features on Guidewire, and batch work across 5M+ records.",
-        stack: ["Java", "Spring Boot", "REST & SOAP", "Guidewire", "Gosu", "PostgreSQL", "AWS"],
+        stack: ["Java", "Spring Boot", "REST & SOAP", "Guidewire", "Gosu", "PostgreSQL", "SQL Server", "AWS"],
         logo: "/vhv_gruppe_logo.jpeg",
     },
     {
@@ -34,13 +36,11 @@ const roles = [
     <div class="rail">
         <div v-for="role in roles" :key="role.org" class="rail-row contents">
             <div class="rail-date">
-                <div>{{ role.from }}</div>
-                <div class="hidden sm:block text-[var(--rule-strong)] leading-tight" aria-hidden="true">|</div>
-                <div>{{ role.to }}</div>
+                <RailDate :from="role.from" :to="role.to" />
             </div>
 
             <div class="rail-body relative">
-                <span class="rail-marker hidden sm:block" aria-hidden="true" />
+                <span class="rail-marker" :class="role.to === 'present' ? 'is-current' : 'is-done'" aria-hidden="true" />
 
                 <div class="flex items-center gap-2.5">
                     <img :src="useAssetUrl(role.logo)" :alt="`${role.org} logo`" loading="lazy"

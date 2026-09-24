@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const links = [
-    { icon: 'material-symbols:mail', to: 'mailto:jonasz.sojkaa@gmail.com', label: 'Email' },
+    { icon: 'mi:email', to: 'mailto:jonasz.sojkaa@gmail.com', label: 'Email' },
     { icon: 'i-simple-icons-linkedin', to: 'https://www.linkedin.com/in/jonasz-s%C3%B3jka/', label: 'LinkedIn' },
     { icon: 'i-simple-icons-github', to: 'https://github.com/sonaszjojka', label: 'GitHub' },
 ]

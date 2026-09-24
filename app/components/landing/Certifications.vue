@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import RailDate from '~/components/shared/RailDate.vue';
+
 type Cert = {
     date: string
     note?: string
@@ -51,8 +53,8 @@ const certs: Cert[] = [
 ]
 
 const courses = {
-    date: '2026.07',
-    note: '— 2026.08',
+    from: '2026.07',
+    to: '2026.08',
     issuer: 'Anthropic',
     items: [
         { name: 'Building with the Claude API', verify: 'https://verify.skilljar.com/c/fj7mcgconsyx' },
@@ -68,64 +70,75 @@ const courses = {
     ],
 }
 
+// The course bundle sits in the timeline by when it finished, so it lands
+// between the certificates on either side of that month.
+const coursesAt = certs.findIndex(cert => cert.date <= courses.to)
+const split = coursesAt === -1 ? certs.length : coursesAt
+const timeline = [
+    ...certs.slice(0, split),
+    courses,
+    ...certs.slice(split),
+]
+
 const { copy, isCopied } = useCopyToClipboard()
 </script>
 
 <template>
     <div class="rail">
-        <div v-for="cert in certs" :key="cert.name" class="rail-row contents">
-            <div class="rail-date">
-                <div>{{ cert.date }}</div>
-                <div v-if="cert.note" class="text-[0.625rem] leading-tight">{{ cert.note }}</div>
-            </div>
-
-            <div class="rail-body relative">
-                <span class="rail-marker hidden sm:block" aria-hidden="true" />
-
-                <h3 class="font-semibold tracking-tight text-[var(--ink-strong)]">{{ cert.name }}</h3>
-                <p class="mt-1 text-[0.9375rem] text-[var(--ink-muted)]">{{ cert.issuer }}</p>
-                <div v-if="cert.credential || cert.verify" class="mt-1.5 flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                    <button v-if="cert.credential" type="button" class="copy-field font-mono text-[0.6875rem] break-all"
-                        :aria-label="`Copy credential ID ${cert.credential}`"
-                        @click="copy(cert.credential, cert.name)">
-                        <span class="text-[var(--ink-faint)]">ID {{ cert.credential }}</span>
-                        <span class="copy-hint print:hidden" :class="{ 'is-copied': isCopied(cert.name) }">
-                            {{ isCopied(cert.name) ? 'copied' : 'copy' }}
-                        </span>
-                    </button>
-
-                    <a v-if="cert.verify" :href="cert.verify" target="_blank" rel="noopener" class="verify-link">
-                        Verify
-                        <UIcon name="akar-icons:link-out" class="size-3 print:hidden" />
-                    </a>
+        <div v-for="entry in timeline" :key="'items' in entry ? entry.issuer : entry.name" class="rail-row contents">
+            <template v-if="'items' in entry">
+                <div class="rail-date">
+                    <RailDate :from="entry.from" :to="entry.to" />
                 </div>
-            </div>
-        </div>
 
-        <div class="rail-row contents">
-            <div class="rail-date">
-                <div>{{ courses.date }}</div>
-                <div class="text-[0.625rem] leading-tight">{{ courses.note }}</div>
-            </div>
+                <div class="rail-body relative">
+                    <span class="rail-marker is-done" aria-hidden="true" />
 
-            <div class="rail-body relative">
-                <span class="rail-marker hidden sm:block" aria-hidden="true" />
+                    <h3 class="font-semibold tracking-tight text-[var(--ink-strong)]">
+                        Claude &amp; agentic development
+                        <span class="eyebrow ml-1.5">{{ entry.items.length }} courses</span>
+                    </h3>
+                    <p class="mt-1 text-[0.9375rem] text-[var(--ink-muted)]">{{ entry.issuer }}</p>
 
-                <h3 class="font-semibold tracking-tight text-[var(--ink-strong)]">
-                    Claude &amp; agentic development
-                    <span class="eyebrow ml-1.5">{{ courses.items.length }} courses</span>
-                </h3>
-                <p class="mt-1 text-[0.9375rem] text-[var(--ink-muted)]">{{ courses.issuer }}</p>
+                    <ul class="mt-2.5 grid gap-x-6 gap-y-1 sm:grid-cols-2">
+                        <li v-for="item in entry.items" :key="item.name">
+                            <a :href="item.verify" target="_blank" rel="noopener"
+                                class="verify-course font-mono text-[0.6875rem] text-[var(--ink-faint)]">
+                                {{ item.name }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </template>
 
-                <ul class="mt-2.5 grid gap-x-6 gap-y-1 sm:grid-cols-2">
-                    <li v-for="item in courses.items" :key="item.name">
-                        <a :href="item.verify" target="_blank" rel="noopener"
-                            class="verify-course font-mono text-[0.6875rem] text-[var(--ink-faint)]">
-                            {{ item.name }}
+            <template v-else>
+                <div class="rail-date">
+                    <div>{{ entry.date }}</div>
+                    <div v-if="entry.note" class="text-[0.625rem] leading-tight">{{ entry.note }}</div>
+                </div>
+
+                <div class="rail-body relative">
+                    <span class="rail-marker is-done" aria-hidden="true" />
+
+                    <h3 class="font-semibold tracking-tight text-[var(--ink-strong)]">{{ entry.name }}</h3>
+                    <p class="mt-1 text-[0.9375rem] text-[var(--ink-muted)]">{{ entry.issuer }}</p>
+                    <div v-if="entry.credential || entry.verify" class="mt-1.5 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                        <button v-if="entry.credential" type="button" class="copy-field font-mono text-[0.6875rem] break-all"
+                            :aria-label="`Copy credential ID ${entry.credential}`"
+                            @click="copy(entry.credential, entry.name)">
+                            <span class="text-[var(--ink-faint)]">ID {{ entry.credential }}</span>
+                            <span class="copy-hint print:hidden" :class="{ 'is-copied': isCopied(entry.name) }">
+                                {{ isCopied(entry.name) ? 'copied' : 'copy' }}
+                            </span>
+                        </button>
+
+                        <a v-if="entry.verify" :href="entry.verify" target="_blank" rel="noopener" class="verify-link">
+                            Verify
+                            <UIcon name="akar-icons:link-out" class="size-3 print:hidden" />
                         </a>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                </div>
+            </template>
         </div>
     </div>
 </template>

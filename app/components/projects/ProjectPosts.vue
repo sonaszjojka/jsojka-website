@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import RailDate from '~/components/shared/RailDate.vue';
+
 const projects = [
     {
         id: '1',
-        period: '2025.10 — 2026.02',
+        from: '2025.10',
+        to: '2026.02',
         title: 'GamiLife',
         kind: 'Engineering thesis',
         summary: 'Task and habit management for groups, with gamification, shared budgets and collaboration built in.',
@@ -16,10 +19,12 @@ const projects = [
 <template>
     <div class="rail">
         <NuxtLink v-for="project in projects" :key="project.id" :to="project.to" class="rail-row group contents">
-            <div class="rail-date">{{ project.period }}</div>
+            <div class="rail-date">
+                <RailDate :from="project.from" :to="project.to" />
+            </div>
 
             <div class="rail-body relative">
-                <span class="rail-marker hidden sm:block" aria-hidden="true" />
+                <span class="rail-marker is-done" aria-hidden="true" />
 
                 <div class="flex items-start gap-4">
                     <img :src="useAssetUrl(project.image)" :alt="`${project.title} logo`" loading="lazy"

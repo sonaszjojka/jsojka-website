@@ -52,27 +52,56 @@ function onPointerUp(event: PointerEvent) {
 </script>
 
 <template>
-    <button type="button" class="seal" :class="revealed && 'is-open'" aria-label="Project details: coming soon, stay tuned"
-        @pointerenter="onPointerEnter" @pointerleave="onPointerLeave" @pointerup="onPointerUp"
-        @focus="focused = true" @blur="focused = false">
-        <svg class="seal-lock" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path class="seal-shackle" d="M5 7V5a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.5"
-                stroke-linecap="round" />
-            <rect x="3" y="7" width="10" height="7" rx="1.5" fill="currentColor" />
-            <circle class="seal-keyhole" cx="8" cy="10.5" r="1" />
-        </svg>
+    <span class="seal-wrap" :class="revealed && 'is-open'">
+        <button type="button" class="seal" aria-label="Project details: coming soon, stay tuned"
+            @pointerenter="onPointerEnter" @pointerleave="onPointerLeave" @pointerup="onPointerUp"
+            @focus="focused = true" @blur="focused = false">
+            <svg class="seal-lock" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path class="seal-shackle" d="M5 7V5a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" />
+                <rect x="3" y="7" width="10" height="7" rx="1.5" fill="currentColor" />
+                <circle class="seal-keyhole" cx="8" cy="10.5" r="1" />
+            </svg>
 
-        <span class="seal-label" aria-hidden="true">{{ label }}</span>
+            <span class="seal-label" aria-hidden="true">{{ label }}</span>
 
-        <span class="seal-redacted" aria-hidden="true">
-            <span class="w-7" />
-            <span class="w-4" />
-            <span class="w-9" />
-        </span>
-    </button>
+            <span class="seal-redacted" aria-hidden="true">
+                <span class="w-7" />
+                <span class="w-4" />
+                <span class="w-9" />
+            </span>
+        </button>
+
+        <span class="seal-hint" aria-hidden="true">More details soon…</span>
+    </span>
 </template>
 
 <style scoped>
+.seal-wrap {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.375rem 0.75rem;
+}
+
+/* Slides out from behind the seal once it opens. */
+.seal-hint {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+    opacity: 0;
+    transform: translateX(-0.375rem);
+    transition: opacity 240ms ease, transform 240ms ease;
+    pointer-events: none;
+}
+
+.is-open .seal-hint {
+    opacity: 1;
+    transform: none;
+    transition-delay: 180ms;
+}
+
 .seal {
     display: inline-flex;
     align-items: center;
@@ -91,7 +120,7 @@ function onPointerUp(event: PointerEvent) {
     transition: color 200ms ease, background-color 200ms ease, border-color 200ms ease;
 }
 
-.seal.is-open {
+.is-open .seal {
     border-style: solid;
     border-color: var(--accent);
     background: var(--accent-soft);

@@ -51,11 +51,6 @@ useHead({
         </section>
 
         <section class="mb-14">
-            <SectionHeader section-title="What's next" />
-            <FuturePlans />
-        </section>
-
-        <section class="mb-14">
             <div class="flex items-baseline justify-between gap-4">
                 <SectionHeader section-title="Selected work" class="flex-1" />
                 <NuxtLink to="/projects"
@@ -64,6 +59,11 @@ useHead({
                 </NuxtLink>
             </div>
             <FeaturedProjects />
+        </section>
+
+        <section class="mb-14">
+            <SectionHeader section-title="What's next" />
+            <FuturePlans />
         </section>
 
         <section>

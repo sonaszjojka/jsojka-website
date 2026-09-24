@@ -22,7 +22,7 @@ const groups: { label: string; items: Tech[] }[] = [
     {
         label: 'Data & cloud',
         items: [
-            { name: 'PostgreSQL', icon: 'devicon:postgresql', since: '2025.10' },
+            { name: 'PostgreSQL', icon: 'devicon:postgresql', since: '2025.10', commercialSince: '2025.11' },
             { name: 'SQL Server', icon: 'devicon:microsoftsqlserver', since: '2023.10', commercialSince: '2025.11' },
             { name: 'AWS', icon: 'simple-icons:amazonwebservices', since: '2025.11', commercialSince: '2025.11' },
         ],
