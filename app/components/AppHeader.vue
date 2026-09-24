@@ -9,13 +9,6 @@ const items = [
 
 const isActive = (to: string) =>
     to === '/' ? route.path === '/' : route.path.startsWith(to)
-
-const colorMode = useColorMode()
-const isDark = computed(() => colorMode.value === 'dark')
-
-// Writing `preference` rather than `value` is what makes the choice stick;
-// `value` is the resolved mode and would be recomputed away.
-const toggleTheme = () => (colorMode.preference = isDark.value ? 'light' : 'dark')
 </script>
 
 <template>
@@ -38,15 +31,7 @@ const toggleTheme = () => (colorMode.preference = isDark.value ? 'light' : 'dark
                     </NuxtLink>
                 </nav>
 
-                <!-- Which icon shows is decided by CSS, not by render state: the
-                     server cannot know the visitor's mode, and the color-mode
-                     script sets the class before paint. So the right icon is up
-                     immediately, with no hydration mismatch and no empty gap. -->
-                <button type="button" @click="toggleTheme" aria-label="Toggle colour theme"
-                    class="flex items-center text-[var(--ink-faint)] transition-colors hover:text-[var(--accent)] print:hidden">
-                    <UIcon name="lucide:moon" class="size-4 dark:hidden" />
-                    <UIcon name="lucide:sun" class="hidden size-4 dark:block" />
-                </button>
+                <ThemeToggle />
             </div>
         </div>
     </header>

@@ -46,31 +46,33 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* The same record sheet after dark: ground and ink swap roles, the evergreen
-   lifts far enough to carry on a dark ground, and every ratio stays at or above
-   its light-mode counterpart. Only the base tokens are redefined — the --ui-*
+/* The dark side: the record sheet goes to near-black with a faint warm cast,
+   and the evergreen gives way to a Sith red. Red cannot climb as high as the
+   old green without turning pink, so the accent settles at ~6:1 on the ground —
+   comfortably AA for text — and the other ratios stay at or above their
+   light-mode counterparts. Only the base tokens are redefined — the --ui-*
    mappings above resolve through them, so Nuxt UI follows automatically.
    Overrides Nuxt UI's own .dark block, which sits in @layer theme and so loses
    to these unlayered rules. */
 .dark {
-  --paper: #141917;
-  --paper-raised: #1c221f;
-  --paper-sunken: #0f1412;
+  --paper: #131112;
+  --paper-raised: #1c191a;
+  --paper-sunken: #0e0c0d;
 
-  --ink: #d3d9d5;
-  --ink-strong: #eef2ef;
-  --ink-muted: #98a29d;
-  --ink-faint: #6d7873;
+  --ink: #dcd6d6;
+  --ink-strong: #f3eeee;
+  --ink-muted: #a39a9b;
+  --ink-faint: #7a7172;
 
-  --rule: #272e2a;
-  --rule-strong: #3b443f;
+  --rule: #2a2527;
+  --rule-strong: #433a3c;
 
-  --accent: #5ec9a6;
-  --accent-hover: #7dd9bb;
-  --accent-soft: #16302a;
-  /* White on the lifted accent is 2:1 — unreadable. Text sitting on an accent
-     fill has to invert with the theme, so it gets its own token. */
-  --on-accent: #0b1512;
+  --accent: #ff5c63;
+  --accent-hover: #ff8086;
+  --accent-soft: #2c1517;
+  /* White on the lifted accent is unreadable. Text sitting on an accent fill
+     has to invert with the theme, so it gets its own token. */
+  --on-accent: #140a0b;
 
   color-scheme: dark;
 }
