@@ -15,7 +15,7 @@ const certs: Cert[] = [
         date: '2026.10',
         name: 'Get started with Redis',
         issuer: 'Redis',
-        verify: '/certificates/redis-get-started.pdf',
+        verify: useAssetUrl('/certificates/redis-get-started.pdf'),
     },
     {
         date: '2026.09',
