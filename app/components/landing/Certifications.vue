@@ -12,6 +12,12 @@ type Cert = {
 
 const certs: Cert[] = [
     {
+        date: '2026.10',
+        name: 'Get started with Redis',
+        issuer: 'Redis',
+        verify: '/certificates/redis-get-started.pdf',
+    },
+    {
         date: '2026.09',
         name: 'Software Architecture & Design of Modern Large Scale Systems',
         issuer: 'Udemy',
